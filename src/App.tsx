@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Discovery from './pages/discovery';
 function App() {
   return (
-    <div className="App">
-
+    <div className="App ">
+      <Discovery/>
     </div>
   );
 }
