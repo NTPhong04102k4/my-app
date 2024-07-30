@@ -1,5 +1,5 @@
 import { singer } from "@src/component/Item/data/dataMusic";
-
+import React from "react";
 export function TopSinger({ data, title }: { data: singer[]; title: string }) {
   return (
     <div className="flex flex-col items-start">
@@ -12,8 +12,7 @@ export function TopSinger({ data, title }: { data: singer[]; title: string }) {
                 <img
                   src={item.srcImg}
                   className="w-full h-full rounded-full object-center"
-                  alt={`${index}`}
-                  accessKey=""
+                  alt={"image"}
                 />
               </div>
               <h1 className="text-[#FFF] text-[20px] font-semibold mt-2">
@@ -25,7 +24,9 @@ export function TopSinger({ data, title }: { data: singer[]; title: string }) {
           <div className="flex items-center justify-center rounded-full bg-[#1E1E1E] w-[62px] h-[62px] active:opacity-70">
             <div className="mask-icon-plus w-[32px] h-[32px] text-[#FFF]" />
           </div>
-          <h1 className="text-[#FFF] text-[20px] font-semibold mt-2">View All</h1>
+          <h1 className="text-[#FFF] text-[20px] font-semibold mt-2">
+            View All
+          </h1>
         </div>
       </div>
     </div>

@@ -1,14 +1,14 @@
-import { PluginAPI } from 'tailwindcss/types/config';
+import { PluginAPI } from "tailwindcss/types/config";
 
 function scrollbarHidePlugin({ addUtilities }: PluginAPI) {
   addUtilities({
-    '.scrollbar-hidden': {
+    ".scrollbar-hidden": {
       /* Firefox */
-      'scrollbar-width': 'none',
+      "scrollbar-width": "none",
       /* Safari and Chrome */
-      '-ms-overflow-style': 'none',
-      '::-webkit-scrollbar': {
-        display: 'none',
+      "-ms-overflow-style": "none",
+      "::-webkit-scrollbar": {
+        display: "none",
       },
     },
   });

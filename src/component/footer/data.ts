@@ -74,7 +74,7 @@ export const featFooter: FeaturesFooter[] = [
 export const dataLoginIcon = [
   {
     id: 1,
-     icon:"mask-icon-face",
+    icon: "mask-icon-face",
   },
   {
     id: 2,

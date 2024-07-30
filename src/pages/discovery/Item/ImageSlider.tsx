@@ -1,7 +1,7 @@
-export function ImageSlider(){
-    return(
-        <div>
-            <div></div>
-        </div>
-    );
-}
+import React  from 'react';
+
+export const ImageSlider = () => (
+  <div>
+    <div />
+  </div>
+);

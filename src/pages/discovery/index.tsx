@@ -1,7 +1,8 @@
-import { SideBarComponent } from "../../component/sideBar";
-import { HeaderComponent } from "../../component/header";
 import { FooterComponent } from "../../component/footer";
+import { HeaderComponent } from "../../component/header";
+import { SideBarComponent } from "../../component/sideBar";
 import { BodyDiscovery } from "./BodyComponent";
+import React  from 'react';
 
 export default function Discovery() {
   return (
