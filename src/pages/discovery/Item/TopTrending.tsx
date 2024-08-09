@@ -41,7 +41,7 @@ export function TopTrending({
                 />
               </div>
               <div className="col-span-3">
-                <h2 className="text-xl text-white font-semibold justify-center bg-red-500">
+                <h2 className="text-xl text-white font-semibold justify-center ">
                   {song.nameSong}
                 </h2>
               </div>
