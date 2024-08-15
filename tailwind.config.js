@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-import iconMaskPlugin from "./src/assets/icon_m3/iconMaskPlugin";
 import textGradientPlugin from "./src/styles/customLinearGardientText.ts";
 import scrollbarHidePlugin from "./src/styles/scroolBarHidden.ts";
 
@@ -18,7 +17,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/forms"),
-    iconMaskPlugin,
     textGradientPlugin,
     scrollbarHidePlugin,
   ],

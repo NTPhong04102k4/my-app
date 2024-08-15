@@ -1,3 +1,4 @@
+
 export interface FeaturesFooter {
   title: string;
   data: {
@@ -69,23 +70,5 @@ export const featFooter: FeaturesFooter[] = [
         features: "Support",
       },
     ],
-  },
-];
-export const dataLoginIcon = [
-  {
-    id: 1,
-    icon: "mask-icon-face",
-  },
-  {
-    id: 2,
-    icon: "mask-icon-lucide_instagram",
-  },
-  {
-    id: 3,
-    icon: "mask-icon-twitter",
-  },
-  {
-    id: 4,
-    icon: "mask-icon-call_fill",
   },
 ];

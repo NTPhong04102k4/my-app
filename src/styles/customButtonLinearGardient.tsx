@@ -33,6 +33,7 @@ const BorderGradientDiv: React.FC<BorderGradientDivProps> = ({
 
         boxShadow: `1px 1px 2px 2px ${borderColor}`,
         borderRadius: "6px",
+        
       }
     : {};
 

@@ -1,8 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
-import { dataLoginIcon, featFooter, FeaturesFooter } from "./data";
+import { IoCallOutline } from "react-icons/io5";
 import React from "react";
+import { featFooter, FeaturesFooter } from "./data";
+import { AiOutlineFacebook } from "react-icons/ai";
+import { SiInstagram } from "react-icons/si";
+import { CiTwitter } from "react-icons/ci";
+import { Button, ButtonWrapper } from "src/styles/Button";
 export const FooterComponent = () => (
-  <div className="flex justify-between mt-8 pb-[30px]">
+  <div className="flex justify-between mt-8 pb-[30px] gap-[46px]">
     <div className="w-[250px] h-[200px]">
       <h1 className="text-[40px] text-[#FFF] h-[63px]">About</h1>
       <p className="text-[16px] text-[#FFF]">
@@ -27,34 +31,39 @@ export const FooterComponent = () => (
       <h1 className="text-gradient-purple-to-blue text-[40px] pr-[20px] align-top  inline-block font-bold ">
         Medolias
       </h1>
-      <div className="flex w-full mt-[85px]  justify-between">
-        {dataLoginIcon &&
-          dataLoginIcon.map((item) => (
-            <div
-              key={item.id}
-              className={`${item.icon} w-[45px] h-[45px] text-[#FFF]`}
-            />
-          ))}
-      </div>
+      <ButtonWrapper className="flex w-full mt-[85px] gap-[6px] mr-[18px] ">
+        <Button onClick={() => {}}>
+          <AiOutlineFacebook size={45} color="white" />
+        </Button>
+        <Button>
+          <SiInstagram size={40} color="white"/>
+        </Button>
+        <Button>
+          <CiTwitter size={45} color="white"/>
+        </Button>
+        <Button>
+          <IoCallOutline size={45} color="white"/>
+        </Button>
+      </ButtonWrapper>
     </div>
   </div>
 );
 
 const FeaturesItem = ({ item }: { item: FeaturesFooter }) => (
   <div className="flex flex-col items-center">
-    <h1 className="text-[#FFF] text-4xl font-bold h-[56px] pt-[-10px] text-center">
+    <button className="text-[#FFF] text-4xl font-bold h-[56px] text-center hov">
       {item.title}
-    </h1>
+    </button>
     <div className="w-full bg-white h-[3px] mb-4" />
-    <div className="gap-[7px] flex-col">
+    <div className="gap-[7px] flex-col flex">
       {item.data &&
         item.data.map((dataItem) => (
-          <h2
+          <button
             key={dataItem?.id}
-            className="text-[#FFF] text-2xl h-[38px] text-center pl-[22px] pr-[22px]"
+            className="text-[#FFF] text-2xl h-[38px] text-center "
           >
             {dataItem.features}
-          </h2>
+          </button>
         ))}
     </div>
   </div>
