@@ -1,17 +1,17 @@
-import { PlayList } from "@src/component/Item/interface";
+import { Albums } from "src/component/Item/interface";
 import React from "react";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
 
-export function TopPlaylist({
+export function TopAlbums({
   data,
   title,
   type,
   componentIcon,
-  color
+  color,
 }: {
-  data: PlayList[];
+  data: Albums[];
   title?: string;
   type?: string;
   componentIcon: IconType;
@@ -30,9 +30,20 @@ export function TopPlaylist({
           data.map((item, index) => (
             <PlaylistItem key={index}>
               <Image src={item.src} alt={`${index}`} />
+              <Name style={{ marginTop: item.id !== 1 ? 9 : 2, maxWidth: 150 }}>
+                {item.nameSong}
+              </Name>
               <ItemInfo>
-                <Name>{item.name}</Name>
-                <Icon color={color} size={16} />
+                <Name
+                  style={{
+                    fontWeight: 100,
+                    fontSize: 12,
+                    marginTop: item.id !== 1 ? 12 : 0,
+                  }}
+                >
+                  {item.nameSinger}
+                </Name>
+                <Icon color={color} size={16} style={{ marginRight: 9 }} />
               </ItemInfo>
             </PlaylistItem>
           ))}
@@ -50,7 +61,6 @@ export function TopPlaylist({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: auto;
   overflow: hidden;
 `;
 
@@ -68,16 +78,16 @@ const Title = styled.h1`
 
 const Type = styled.h1`
   font-size: 32px;
-  margin-left: 0.5rem;
+  margin-left: 8px;
   font-weight: 500;
 `;
 
 const PlaylistWrapper = styled.div`
   display: inline-flex;
-  gap: 1rem;
+  gap: 16px;
   align-items: center;
   overflow-x: auto;
-
+  /* margin-left: 22px; */
 `;
 
 const PlaylistItem = styled.div`
@@ -85,7 +95,7 @@ const PlaylistItem = styled.div`
   border-radius: 12px;
   align-items: center;
   width: 170px;
-  padding-bottom: 8px;
+  height: 246px;
 `;
 
 const Image = styled.img`
@@ -93,18 +103,20 @@ const Image = styled.img`
 `;
 
 const ItemInfo = styled.div`
+  border-radius: 12px;
+  width: 170px;
+  flex-direction: row;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 9px;
-  margin-left: 8px;
-  margin-right: 4px;
+  align-items: end;
 `;
 
 const Name = styled.h3`
   font-size: 16px;
   color: #fff;
   font-family: serif;
+  font-weight: 500;
+  margin-left: 12px;
 `;
 
 const ViewAllContainer = styled.div`
@@ -115,7 +127,7 @@ const ViewAllContainer = styled.div`
 `;
 
 const ViewAllText = styled.h3`
- color: #fff;
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   margin-top: 8px;

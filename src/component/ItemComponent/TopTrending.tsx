@@ -1,5 +1,6 @@
 import { SongTrending } from "@src/component/Item/interface";
 import React from "react";
+import styled from "styled-components";
 
 export function TopTrending({
   data,
@@ -9,60 +10,137 @@ export function TopTrending({
   title: string;
 }) {
   return (
-    <div className="container mr-auto pb-4 pt-4 pr-[60px]">
-      <h1 className="text-3xl font-bold mb-6 text-white">{title}</h1>
+    <Container>
+      <Title>{title}</Title>
+      <HeaderGrid>
+        <HeaderCell />
+        <HeaderCell />
+        <HeaderCell>Release Date</HeaderCell>
+        <HeaderCell>Albums</HeaderCell>
+        <HeaderCell>Time</HeaderCell>
+      </HeaderGrid>
 
-      <div className="grid grid-cols-12   text-[24px] text-white font-bold">
-        <div className="col-span-1 " />
-        <div className="col-span-2 justify-center justify-self-center center items-center">
-          Image
-        </div>
-        <div className="col-span-3">Song</div>
-        <div className="col-span-2">Artist</div>
-        <div className="col-span-2">Release Date</div>
-        <div className="col-span-2">Time</div>
-      </div>
-
-      <div className="space-y-4">
+      <SongList>
         {data.map((song, index) => (
-          <div key={song.id} className="grid grid-cols-12 gap-4 items-center">
-            <div className="col-span-1 ">
-              <span className="inline-block text-white text-[24px] font-semibold">
-                #{index + 1}
-              </span>
-            </div>
-            <div className="col-span-11 bg-[#1E1E1E] rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 grid grid-cols-11 gap-4 items-center">
-              <div className="col-span-2">
-                <img
-                  src={song.src}
-                  alt={song.nameSong}
-                  key={song.id}
-                  className="w-20 h-20 object-cover rounded-md"
-                />
-              </div>
-              <div className="col-span-3">
-                <h2 className="text-xl text-white font-semibold justify-center ">
-                  {song.nameSong}
-                </h2>
-              </div>
-              <div className="col-span-2">
-                <p className="text-white font-semibold">{song.nameSinger}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="text-sm text-white font-semibold">
-                  {song.dateRelease}
-                </p>
-              </div>
-              <div className="col-span-2">
-                <p className="text-sm text-white">
-                  {Math.floor(song.playtime / 60)}:
-                  {(song.playtime % 60).toString().padStart(2, "0")}
-                </p>
-              </div>
-            </div>
-          </div>
+          <SongItem key={song.id}>
+            <Rank>#{index + 1}</Rank>
+            <SongContent>
+              <div className="inline-flex gap-4">
+              <ImageWrapper>
+                <img src={song.src} alt={song.nameSong} className="image" />
+              </ImageWrapper>
+              <div className="flex-col align-middle justify-center flex"> 
+                <SongDetails>{song.nameSong}</SongDetails>
+                <Artist>{song.nameSinger}</Artist>
+              </div></div>
+              <ReleaseDate>{song.dateRelease}</ReleaseDate>
+              <DescriptionAblums>{song.description}</DescriptionAblums>
+              <Time>
+                {Math.floor(song.playtime / 60)}:
+                {(song.playtime % 60).toString().padStart(2, "0")}
+              </Time>
+            </SongContent>
+          </SongItem>
         ))}
-      </div>
-    </div>
+      </SongList>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: calc(100% - 50px);
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 40px;
+  color: white;
+`;
+const HeaderGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 2.5fr 3.5fr 1fr;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 6px;
+`;
+
+const HeaderCell = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SongList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const SongItem = styled.div`
+  display: grid;
+  grid-template-columns: 0.5fr 9.5fr;
+  align-items: center;
+  gap: 16px;
+`;
+
+const Rank = styled.span`
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+`;
+
+const SongContent = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 2fr 4fr 1fr;
+  align-items: center;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  .image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+`;
+
+const SongDetails = styled.h2`
+  font-size: 1.25rem;
+  color: white;
+  text-align: left;
+`;
+
+const Artist = styled.p`
+  font-weight: bold;
+  color: white;
+  text-align: left;
+`;
+
+const ReleaseDate = styled.p`
+  font-size: 0.875rem;
+  color: white;
+  text-align: center;
+`;
+
+const Time = styled.p`
+  font-size: 0.875rem;
+  color: white;
+  text-align: center;
+`;
+const DescriptionAblums = styled.p`
+  font-size: 0.875rem;
+  color: white;
+  text-align: center;
+  
+`;

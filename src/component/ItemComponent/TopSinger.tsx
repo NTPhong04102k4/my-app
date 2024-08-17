@@ -1,34 +1,108 @@
-import { Singer } from "@src/component/Item/interface";
 import React from "react";
-export function TopSinger({ data, title }: { data: Singer[]; title: string }) {
+import styled from "styled-components";
+import { Singer } from "@src/component/Item/interface";
+import { FaPlus } from "react-icons/fa";
+
+export function TopSinger({ data, title ,color}: { data: Singer[]; title: string,color:string }) {
   return (
-    <div className="flex flex-col items-start">
-      <h1 className="text-[#FFF] text-[40px] mb-4">{title}</h1>
-      <div className="flex flex-wrap gap-[16px] ms-[32px]">
+    <Container>
+      <Title>{title}</Title>
+      <SingerList>
         {data &&
           data.map((item, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="rounded-full w-[130px] h-[130px] bg-red-500">
-                <img
-                  src={item.srcImg}
-                  className="w-full h-full rounded-full object-center"
-                  alt={"image"}
-                />
-              </div>
-              <h1 className="text-[#FFF] text-[20px] font-semibold mt-2">
-                {item.name}
-              </h1>
-            </div>
+            <SingerItem key={index}>
+              <ImageContainer>
+                <SingerImage src={item.srcImg} alt="Singer Image" />
+              </ImageContainer>
+              <SingerName>{item.name}</SingerName>
+            </SingerItem>
           ))}
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex items-center justify-center rounded-full bg-[#1E1E1E] w-[62px] h-[62px] active:opacity-70">
-            <div className="mask-icon-plus w-[32px] h-[32px] text-[#FFF]" />
-          </div>
-          <h1 className="text-[#FFF] text-[20px] font-semibold mt-2">
-            View All
-          </h1>
-        </div>
-      </div>
-    </div>
+        <ViewAllContainer>
+          <ViewAllButton>
+            <FaPlus color="#FFF" size={24} />
+          </ViewAllButton>
+          <ViewAllText>View All</ViewAllText>
+        </ViewAllContainer>
+      </SingerList>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const Title = styled.h1`
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 28px;
+  margin-top: 40px;
+`;
+
+const SingerList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-left: 66px;
+`;
+
+const SingerItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ImageContainer = styled.div`
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: row;
+  height: 125px;
+  width: 125px;
+`;
+
+const SingerImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const SingerName = styled.h1`
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 8px;
+`;
+
+const ViewAllContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ViewAllButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #1e1e1e;
+  border-radius: 50%;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
+`;
+const ViewAllText = styled.h1`
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+  text-align: center;
+  width: 60px;
+`;
