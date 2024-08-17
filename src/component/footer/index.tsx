@@ -1,70 +1,186 @@
-import { IoCallOutline } from "react-icons/io5";
 import React from "react";
-import { featFooter, FeaturesFooter } from "./data";
+import styled from "styled-components";
+import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { SiInstagram } from "react-icons/si";
 import { CiTwitter } from "react-icons/ci";
-import { Button, ButtonWrapper } from "src/styles/Button";
+import { featFooter, FeaturesFooter } from "./data";
+
 export const FooterComponent = () => (
-  <div className="flex justify-between mt-8 pb-[30px] gap-[46px]">
-    <div className="w-[250px] h-[200px]">
-      <h1 className="text-[40px] text-[#FFF] h-[63px]">About</h1>
-      <p className="text-[16px] text-[#FFF]">
+  <FooterContainer>
+    <AboutSection>
+      <AboutTitle>About</AboutTitle>
+      <AboutText>
         Melodies is a website that has been created for over{" "}
-        <span className="text-[#EE10B0] hover:underline hover:font-semibold transition-all duration-300">
-          5 years
-        </span>{" "}
-        now and it is one of the most famous music player website's in the
-        world. In this website you can listen and download songs for free. Also
-        if you want no limitation you can buy our{" "}
-        <span className="text-[#0E9EEF] hover:underline hover:font-semibold transition-all duration-300">
-          premium passes.
-        </span>
-      </p>
-    </div>
-    <div className="flex gap-[10px] ml-[25px]">
+        <HighlightText color="#EE10B0">5 years</HighlightText> now and it is one
+        of the most famous music player website's in the world. In this website
+        you can listen and download songs for free. Also if you want no
+        limitation you can buy our{" "}
+        <HighlightText color="#0E9EEF">premium passes.</HighlightText>
+      </AboutText>
+    </AboutSection>
+    <FeaturesSection>
       {featFooter.map((item, index) => (
         <FeaturesItem key={index} item={item} />
       ))}
-    </div>
-    <div className="flex flex-col items-start  mr-[18px]">
-      <h1 className="text-gradient-purple-to-blue text-[40px] pr-[20px] align-top  inline-block font-bold ">
-        Medolias
-      </h1>
-      <ButtonWrapper className="flex w-full mt-[85px] gap-[6px] mr-[18px] ">
-        <Button onClick={() => {}}>
+    </FeaturesSection>
+    <LogoSection>
+      <LogoText>Medolias</LogoText>
+      <SocialButtonsWrapper>
+        <SocialButton>
           <AiOutlineFacebook size={45} color="white" />
-        </Button>
-        <Button>
-          <SiInstagram size={40} color="white"/>
-        </Button>
-        <Button>
-          <CiTwitter size={45} color="white"/>
-        </Button>
-        <Button>
-          <IoCallOutline size={45} color="white"/>
-        </Button>
-      </ButtonWrapper>
-    </div>
-  </div>
+        </SocialButton>
+        <SocialButton>
+          <SiInstagram size={40} color="white" />
+        </SocialButton>
+        <SocialButton>
+          <CiTwitter size={45} color="white" />
+        </SocialButton>
+        <SocialButton>
+          <IoCallOutline size={45} color="white" />
+        </SocialButton>
+      </SocialButtonsWrapper>
+    </LogoSection>
+  </FooterContainer>
 );
 
 const FeaturesItem = ({ item }: { item: FeaturesFooter }) => (
-  <div className="flex flex-col items-center">
-    <button className="text-[#FFF] text-4xl font-bold h-[56px] text-center hov">
-      {item.title}
-    </button>
-    <div className="w-full bg-white h-[3px] mb-4" />
-    <div className="gap-[7px] flex-col flex">
+  <FeatureColumn>
+    <FeatureTitle>{item.title}</FeatureTitle>
+    <Divider />
+    <FeatureList>
       {item.data &&
         item.data.map((dataItem) => (
-          <button
-            key={dataItem?.id}
-            className="text-[#FFF] text-2xl h-[38px] text-center "
-          >
+          <FeatureButton key={dataItem?.id}>
             {dataItem.features}
-          </button>
+          </FeatureButton>
         ))}
-    </div>
-  </div>
+    </FeatureList>
+  </FeatureColumn>
 );
+
+const FooterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-bottom: 30px;
+  gap: 46px;
+`;
+
+const AboutSection = styled.div`
+  width: 250px;
+  height: 200px;
+`;
+
+const AboutTitle = styled.h1`
+  font-size: 40px;
+  color: #FFF;
+  height: 63px;
+`;
+
+const AboutText = styled.p`
+  font-size: 16px;
+  color: #FFF;
+  line-height: 1.5;
+`;
+
+const HighlightText = styled.span<{ color: string }>`
+  color: ${props => props.color};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+`;
+
+const FeaturesSection = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-left: 25px;
+`;
+
+const FeatureColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FeatureTitle = styled.button`
+  color: #FFF;
+  font-size: 2.25rem;
+  font-weight: bold;
+  height: 56px;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #EE10B0;
+  }
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  margin-bottom: 1rem;
+`;
+
+const FeatureList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+`;
+
+const FeatureButton = styled.button`
+  color: #FFF;
+  font-size: 1.5rem;
+  height: 38px;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #0E9EEF;
+  }
+`;
+
+const LogoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 18px;
+`;
+
+const LogoText = styled.h1`
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(to right, #EE10B0, #0E9EEF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const SocialButtonsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 85px;
+  gap: 6px;
+`;
+
+const SocialButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export default FooterComponent;
