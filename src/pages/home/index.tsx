@@ -1,5 +1,4 @@
 import { FooterComponent } from "src/component/footer";
-import { HeaderComponent } from "src/component/header";
 import { SideBarComponent } from "src/component/sideBar";
 import { ItemMusicGenres } from "./Item/ItemMusicGenres";
 import { DATA_MUSIC_GENRES } from "./data";
@@ -10,6 +9,7 @@ import { TopMusic } from "src/component/ItemComponent/TopMusicFavorites";
 import { RiRecordCircleLine } from "react-icons/ri";
 import { MdOutlineQueueMusic } from "react-icons/md";
 import { FaMusic } from "react-icons/fa";
+import { HeaderComponent } from "src/component/header";
 
 export default function Home() {
   return (
