@@ -9,31 +9,31 @@ import { MdOutlineSettings } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
 import { MdQueueMusic } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
-export const sidebarComponent = [
+export const SIDE_BAR = [
   {
     title: "Menu",
     data: [
       {
-        featuresID: 0,
-        featuresName: "Home",
+        id: 0,
+        name: "Home",
         path: "/home",
         componentIcon: BiHomeAlt,
       },
       {
-        featuresID: 1,
-        featuresName: "Discover",
+        id: 1,
+        name: "Discover",
         path: "/discovery",
         componentIcon: MdOutlineExplore,
       },
       {
-        featuresID: 2,
-        featuresName: "Albums",
+        id: 2,
+        name: "Albums",
         path: "/albums",
         componentIcon: RiRecordCircleLine,
       },
       {
-        featuresID: 3,
-        featuresName: "Artists",
+        id: 3,
+        name: "Artists",
         path: "/artists",
         componentIcon: FaRegUserCircle,
       },
@@ -43,14 +43,14 @@ export const sidebarComponent = [
     title: "Library",
     data: [
       {
-        featuresID: 4,
-        featuresName: "Recently Added",
+        id: 4,
+        name: "Recently Added",
         path: "/recentlyAdded",
         componentIcon: GoClock,
       },
       {
-        featuresID: 5,
-        featuresName: "Most played",
+        id: 5,
+        name: "Most played",
         path: "/mostPlayed",
         componentIcon: IoRefreshCircleOutline,
       },
@@ -60,20 +60,20 @@ export const sidebarComponent = [
     title: "Playlist and favorite",
     data: [
       {
-        featuresID: 6,
-        featuresName: "Your favorites",
+        id: 6,
+        name: "Your favorites",
         path: "/yourFavorite",
         componentIcon: FaRegHeart,
       },
       {
-        featuresID: 7,
-        featuresName: "Your playlist",
+        id: 7,
+        name: "Your playlist",
         path: "/yourPlaylist",
         componentIcon: MdQueueMusic,
       },
       {
-        featuresID: 8,
-        featuresName: "Add playlist",
+        id: 8,
+        name: "Add playlist",
         path: "/addPlaylist",
         componentIcon: MdLibraryAdd,
       },
@@ -83,14 +83,14 @@ export const sidebarComponent = [
     title: "General",
     data: [
       {
-        featuresID: 9,
-        featuresName: "Setting",
+        id: 9,
+        name: "Setting",
         path: "/setting",
         componentIcon: MdOutlineSettings,
       },
       {
-        featuresID: 10,
-        featuresName: "Logout",
+        id: 10,
+        name: "Logout",
         path: "/logout",
         componentIcon: IoIosLogOut,
       },

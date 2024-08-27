@@ -19,5 +19,8 @@ export const ButtonImage = styled(Button)<ImageButtonProps>`
     padding: 0;
     height: ${(props) => `${props.height || 50}px`};
     width: ${(props) => `${props.width || 50}px`};
+    
+    box-shadow:0 4px 10px rgba(0, 0, 0, 0.3);
+    
 `;
 

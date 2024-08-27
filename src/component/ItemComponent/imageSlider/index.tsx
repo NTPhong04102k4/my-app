@@ -39,7 +39,7 @@ export const ImageSlide = () => {
 
   return (
     <Container>
-      <ButtonNav style={{ marginRight: 16 }} onClick={handlePrevClick}>
+      <ButtonNav style={{ marginRight:16 }} onClick={handlePrevClick}>
         <MdNavigateBefore size={50} />
       </ButtonNav>
       <ContentContainer
@@ -84,7 +84,7 @@ const ButtonNav = styled.button`
   display: flex;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 100%;
+  border-radius: 50%;
   &:focus {
     opacity: 0.9;
   }
@@ -98,7 +98,7 @@ const ContentContainer = styled(Box)`
   display: flex;
   flex-direction: column;
   height: 350px;
-  width: 850px;
+  width: 832px;
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -170,10 +170,8 @@ const Button = styled.button<{ color: string }>`
 const Container = styled.div`
   display: inline-flex;
   align-items: center;
-  width: calc(100% - 50px);
-  max-width: 100%;
   margin-top: 62px;
-  overflow: hidden;
+  flex-wrap: wrap;
 `;
 
 const ButtonGroup = styled.div`

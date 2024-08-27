@@ -27,17 +27,19 @@ export const Button = styled.button<ButtonProps>`
   cursor: pointer;
   transition:
     background-color 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px #000000;
+
   }
   &:active {
-    transform: scale(1.1);
+    transform: scale(1.01);
     opacity: 0.7;
   }
 `;
 
-// Define ButtonWrapper after Button
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 6px;
@@ -48,7 +50,7 @@ export const ButtonWrapper = styled.div`
   }
 
   ${Button}:hover {
-    transform: scale(1.1);
+    transform: scale(1.01);
     opacity: 1;
   }
 `;

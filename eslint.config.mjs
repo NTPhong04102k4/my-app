@@ -1,36 +1,31 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import pluginReact from "eslint-plugin-react";
-
-export default [
-  {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    languageOptions: {
-      parser: tsParser,
-      globals: {
-        ...globals.browser
-      },
-    },
-    plugins: {
-      "@typescript-eslint": tseslint,
-      react: pluginReact
-    },
-    rules: {
-      "no-unused-vars": "off", // Tắt quy tắc no-unused-vars của ESLint cơ bản
-      "@typescript-eslint/no-unused-vars": ["error", {
-        args: "all",
-        argsIgnorePattern: "^_",
-        caughtErrors: "all",
-        caughtErrorsIgnorePattern: "^_",
-        destructuredArrayIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-        ignoreRestSiblings: true
-      }], // Bật quy tắc no-unused-vars của TypeScript ESLint
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+  ],
+  plugins: ['@typescript-eslint', 'react'],
+  env: {
+    browser: true,
+    es6: true,
+  },
+  rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', {
+      args: 'all',
+      argsIgnorePattern: '^_',
+      caughtErrors: 'all',
+      caughtErrorsIgnorePattern: '^_',
+      destructuredArrayIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      ignoreRestSiblings: true,
+    }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
     },
   },
-  pluginJs.configs.recommended, // Cấu hình khuyến nghị cho JS
-  tseslint.configs.recommended, // Cấu hình khuyến nghị cho TypeScript
-  pluginReact.configs.recommended, // Cấu hình khuyến nghị cho React
-];
+}

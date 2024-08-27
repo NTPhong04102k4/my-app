@@ -9,7 +9,7 @@ export function TopPlaylist({
   title,
   type,
   componentIcon,
-  color
+  color,
 }: {
   data: PlayList[];
   title?: string;
@@ -25,6 +25,7 @@ export function TopPlaylist({
         <Title>{title}</Title>
         <Type style={{ color: color }}>{type}</Type>
       </Header>
+      <div className="inline-flex">
       <PlaylistWrapper>
         {data &&
           data.map((item, index) => (
@@ -36,13 +37,15 @@ export function TopPlaylist({
               </ItemInfo>
             </PlaylistItem>
           ))}
-        <ViewAllContainer>
+   
+      </PlaylistWrapper>
+      <ViewAllContainer>
           <ViewAllButton>
             <FaPlus color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
-      </PlaylistWrapper>
+      </div>
     </Container>
   );
 }
@@ -50,8 +53,7 @@ export function TopPlaylist({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: auto;
-  overflow: hidden;
+  /* width: 100%; */
 `;
 
 const Header = styled.div`
@@ -74,18 +76,23 @@ const Type = styled.h1`
 
 const PlaylistWrapper = styled.div`
   display: inline-flex;
-  gap: 1rem;
+  gap: 16px;
   align-items: center;
-  overflow-x: auto;
-
 `;
-
-const PlaylistItem = styled.div`
+ 
+const PlaylistItem = styled.button`
   background-color: #1f1f1f;
-  border-radius: 12px;
+  border-radius: 10px;
   align-items: center;
-  width: 170px;
+  width: 168.8px;
   padding-bottom: 8px;
+  height: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0 4px 8px #000;
+    transform: scale(1.01);
+  }
 `;
 
 const Image = styled.img`
@@ -112,10 +119,11 @@ const ViewAllContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 16px;
 `;
 
 const ViewAllText = styled.h3`
- color: #fff;
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   margin-top: 8px;

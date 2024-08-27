@@ -20,10 +20,11 @@ export function TopVideo({
         <Title>{title}</Title>
         <Type style={{ color }}>{type}</Type>
       </Header>
+      <div className="inline-flex flex-1 align-middle">
       <ListMusicVideo>
         {data.map((item, index) => {
           return (
-            <ItemContainer key={index}>
+            <ItemContainer key={index} idx={index}>
               <Image src={item.src} alt={item.nameSinger} />
               <DescriptionVideo>
                 <NameMusic>{item.nameSong}</NameMusic>
@@ -35,13 +36,15 @@ export function TopVideo({
             </ItemContainer>
           );
         })}
-          <ViewAllContainer>
+         
+      </ListMusicVideo>
+      <ViewAllContainer>
           <ViewAllButton>
             <FaPlus color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
-      </ListMusicVideo>
+        </div>
     </Container>
   );
 }
@@ -72,27 +75,33 @@ const Type = styled.h1`
 `;
 
 const ListMusicVideo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 18px;
     margin-left: 4px;
 `;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled.div<{idx:number}>`
   width: 290px;
   height: 240px;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   background-color: #1f1f1f;
+  margin-top: ${(props)=>props.idx>2?27:0}px;
+  transition: tranform 0.3s ease,box-shadow 0.3s ease;
+  &:hover{
+    box-shadow: 0px 5px 5px #000;
+    transform: scale(1.01);
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 170px;
-  object-fit: fill;
-  border-radius: 4px;
+  object-fit: cover;
+  border-radius: 10px;
 `;
 
 const DescriptionVideo = styled.div`
@@ -119,6 +128,9 @@ const ViewAllContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 16px;
+  margin-top: 42px;
+ 
 `;
 
 const ViewAllText = styled.h3`

@@ -1,82 +1,108 @@
-import { useNavigate } from "react-router-dom";
-import BorderGradientDiv from "../../styles/customButtonLinearGardient";
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import { IconType } from "react-icons";
+import styled from "styled-components";
+import { selectPages } from "src/features/utilCommon";
 
 type Pages = {
-  featuresID: number;
-  featuresName: string;
-  path: string;
   componentIcon: IconType;
+  id: number;
+  name: string;
+  path: string;
 };
 
 type SideBarComponentItemProps = {
-  item: Pages[];
+  data: Pages[];
   title: string;
+  pageId: number;
+  choosePage: (val: selectPages) => void;
 };
 
 export const SideBarComponentItem = ({
-  item,
+  data,
   title,
+  pageId,
+  choosePage,
 }: SideBarComponentItemProps) => {
-  const [selectItem, setSelectItem] = useState(0);
-  const navigate = useNavigate();
+  const handleItemClick = useCallback(
+    (page: Pages) => {
+      const pagesInfo = {
+        path: page.path,
+        id: page.id,
+        name: page.name,
+      };
+      choosePage(pagesInfo);
+    },
+    [choosePage]
+  );
+
+  const getColor = (pageId: number, isActive: boolean) => {
+    if (pageId === 8) return '#0E9EEF';
+    if (pageId === 10) return '#ee10b0';
+    return  '#FFF';
+  };
 
   return (
-    <nav className="flex flex-col mt-3 relative">
-      <h3 className="text-[#EE10B0] text-[18px] font-normal ms-4 ps-0.3 text-opacity-60 h-[22px] mb-2">
-        {title}
-      </h3>
-      {item.map((item) => {
-        const Icon = item.componentIcon;
+    <nav className="flex flex-col mt-3 ">
+      <Title>{title}</Title>
+      {data.map((page) => {
+        const Icon = page.componentIcon;
+        const isActive = page.id === pageId;
         return (
-          <button
-            onClick={() => {
-              setSelectItem(item.featuresID);
-              navigate(`${item.path}`);
-            }}
-            key={item.featuresID}
-            className={`max-w-[150px] ${
-              item.featuresID === selectItem
-                ? " ms-3 me-4 mt-1 mb-2 -ps-0.5 "
-                : "bg-transparent ms-4 me-4"
-            }`}
+          <NavItemButton
+            key={page.id}
+            isActive={isActive}
+            onClick={() => handleItemClick(page)}
           >
-            <BorderGradientDiv
-              borderColor="#FFF"
-              backgroundColor="#EE10B0"
-              borderWidth="0.1px"
-              isActive={item.featuresID === selectItem}
-            >
-              <div
-                className={`inline-flex ${
-                  item.featuresID === selectItem &&
-                  item.featuresID !== 8 &&
-                  item.featuresID !== 10
-                    ? "rounded-md scale-105 ml-2"
-                    : "bg-transparent"
-                } items-center w-full space-x-1`}
-              >
-                <Icon
-                  size={20}
-                  color={
-                    item.featuresID === 8
-                      ? "#0E9EEF"
-                      : item.featuresID === 10
-                        ? "#EE10B0"
-                        : "#FFF"
-                  }
-                />
-                <h2
-                  className={`${item.featuresID === 8 ? "text-[#0E9EEF]" : item.featuresID === 10 ? "text-[#EE10B0]" : "text-[#FFF]"} text-[16px] align-middle`}
-                >
-                  {item.featuresName}
-                </h2>
-              </div>
-            </BorderGradientDiv>
-          </button>
+            <ContentWrapper isActive={isActive}>
+              <IconWrapper>
+                <Icon size={20} color={getColor(page.id, isActive)} />
+              </IconWrapper>
+              <NamePage style={{color:getColor(page.id, isActive)}} >{page.name}</NamePage>
+            </ContentWrapper>
+          </NavItemButton>
         );
       })}
     </nav>
   );
 };
+
+const NavItemButton = styled.button<{ isActive: boolean }>`
+  width: 180px;
+  height: 40px; 
+  background: ${({ isActive }) => (isActive ? " #EE10B0 " : "transparent")};
+  border: ${({ isActive }) => (isActive ? "0.5px solid #EE10B0" : "none")};
+  box-shadow: ${({ isActive }) => (isActive ? "0 0 4px #000000" : "none")};
+  margin: 0.5rem 1rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  transform: ${({ isActive }) => (isActive ? "scale(1.05)" : "scale(1)")};
+`;
+
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ContentWrapper = styled.div<{ isActive: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+`;
+
+const Title = styled.h3`
+  color: #ee10b0;
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+`;
+
+const NamePage = styled.h3`
+  color:  #FFF;
+  font-size: 16px;
+  font-weight: normal;
+`;

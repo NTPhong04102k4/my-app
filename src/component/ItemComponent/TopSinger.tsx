@@ -7,6 +7,7 @@ export function TopSinger({ data, title ,color}: { data: Singer[]; title: string
   return (
     <Container>
       <Title>{title}</Title>
+      <div className="inline-flex">
       <SingerList>
         {data &&
           data.map((item, index) => (
@@ -17,13 +18,15 @@ export function TopSinger({ data, title ,color}: { data: Singer[]; title: string
               <SingerName>{item.name}</SingerName>
             </SingerItem>
           ))}
-        <ViewAllContainer>
+      
+      </SingerList>
+
+      <ViewAllContainer>
           <ViewAllButton>
             <FaPlus color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
-        </ViewAllContainer>
-      </SingerList>
+        </ViewAllContainer></div>
     </Container>
   );
 }
@@ -31,7 +34,6 @@ export function TopSinger({ data, title ,color}: { data: Singer[]; title: string
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 `;
 
 const Title = styled.h1`
@@ -45,13 +47,23 @@ const SingerList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-left: 66px;
+  margin-left: 30px;
 `;
 
-const SingerItem = styled.div`
+const SingerItem = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay:0.1s;
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  } */
 `;
 
 const ImageContainer = styled.div`
@@ -59,16 +71,26 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  flex-direction: row;
-  height: 125px;
-  width: 125px;
+  height: 130px;
+  width: 130px;
+  background-position: center;
+  transition: tranform 0.3s ease, box-shadow 0.3s ease;
+
+  :hover{
+    box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.3);
+    scale: 1.05;
+
+  }
+  
 `;
 
 const SingerImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border-radius: 50%;
+  object-fit: fill;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+ 
 `;
 
 const SingerName = styled.h1`
@@ -83,6 +105,7 @@ const ViewAllContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 16px;
 `;
 
 const ViewAllButton = styled.div`
@@ -94,7 +117,13 @@ const ViewAllButton = styled.div`
   background-color: #1e1e1e;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  &:hover {
+    background-color: #2e2e2e;
+    transform: scale(1.1);
+  }
   &:active {
+    transform: scale(0.95);
     opacity: 0.7;
   }
 `;

@@ -28,16 +28,16 @@ export const FooterComponent = () => (
       <LogoText>Medolias</LogoText>
       <SocialButtonsWrapper>
         <SocialButton>
-          <AiOutlineFacebook size={45} color="white" />
+          <AiOutlineFacebook size={24} color="white" />
         </SocialButton>
         <SocialButton>
-          <SiInstagram size={40} color="white" />
+          <SiInstagram size={24} color="white" />
         </SocialButton>
         <SocialButton>
-          <CiTwitter size={45} color="white" />
+          <CiTwitter size={24} color="white" />
         </SocialButton>
         <SocialButton>
-          <IoCallOutline size={45} color="white" />
+          <IoCallOutline size={24} color="white" />
         </SocialButton>
       </SocialButtonsWrapper>
     </LogoSection>
@@ -108,7 +108,7 @@ const FeatureColumn = styled.div`
 
 const FeatureTitle = styled.button`
   color: #FFF;
-  font-size: 2.25rem;
+  font-size: 36px;
   font-weight: bold;
   height: 56px;
   text-align: center;
@@ -169,7 +169,7 @@ const SocialButtonsWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-top: 85px;
-  gap: 6px;
+  gap: 24px;
 `;
 
 const SocialButton = styled.button`
@@ -179,7 +179,7 @@ const SocialButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(2.0);
   }
 `;
 

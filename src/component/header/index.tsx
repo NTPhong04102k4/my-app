@@ -13,13 +13,13 @@ export function HeaderComponent() {
       </SearchContainer>
       <NavContainer>
         <NavButton>
-          <h2>About</h2>
+          <Title>About</Title>
         </NavButton>
         <NavButton>
-          <h2>Contact</h2>
+          <Title>Contact</Title>
         </NavButton>
         <NavButton>
-          <h2>Premium</h2>
+          <Title>Premium</Title>
         </NavButton>
       </NavContainer>
       <AuthContainer>
@@ -36,24 +36,21 @@ export function HeaderComponent() {
 
 const HeaderContainer = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding-top: 56px;
+  margin-bottom: 22px;
 `;
 
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  background-color: #656565;
-  border-radius: 10px;
-  padding: 1px 0px 1px 4px;
+  background-color: #3a3737;
+  border-radius: 6px;
   box-shadow: 0 4px 5px rgba(44, 42, 42, 0.3);
   transition: box-shadow 0.3s ease;
-  flex: 0 1 auto;
 
-  &:focus-within {
-    box-shadow: 0 0 20px rgba(238, 16, 176, 0.6);
+ &:focus-within {
+    box-shadow: 0 0 2px #e9e6e8;
   }
 `;
 
@@ -61,7 +58,7 @@ const SearchButton = styled.button`
   background: transparent;
   border: none;
   color: white;
-  margin: 0 8px;
+  margin: 0 4px;
   cursor: pointer;
   transition:
     color 0.3s ease,
@@ -69,33 +66,30 @@ const SearchButton = styled.button`
 `;
 
 const SearchInput = styled.input`
-  width: 288px;
-  background: transparent;
-  
+  width: 270px;  
+  background: inherit;
   border: 0.1px solid #656565;
   color: white;
-  padding: 8px;
-  border-radius: 10px;
+  padding: 4px;
+  border-radius: 4px;
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-
   ::placeholder {
-    color: rgba(255, 255, 255, 0.8);
+    color: #FFF;
     font-weight: 500;
   }
 
   &:focus {
     outline: none;
     border-color: #716d70;
-    box-shadow: 0 0 10px #716d70;
-
+    box-shadow: 0 0 5px #716d70;
   }
 `;
 
 const NavContainer = styled.div`
   display: flex;
-  gap: 46px;
+  gap: 1.5rem;
   justify-content: center;
   flex: 1 1 auto;
 `;
@@ -106,8 +100,8 @@ const NavButton = styled.button`
   padding: 0;
   cursor: pointer;
 
-  h2 {
-    font-size: 2rem;
+  Title {
+    font-size: 26px;
     font-weight: bold;
     color: #fff;
   }
@@ -115,15 +109,17 @@ const NavButton = styled.button`
 
 const AuthContainer = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 1rem;
   justify-content: flex-end;
   flex: 0 1 auto;
+  /* padding-right: 30px; */
+
 `;
 
 const AuthButton = styled.button<{ isPrimary?: boolean }>`
-  width: 119px;
-  height: 38px;
-  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  border-radius: 6px;
   font-size: 1.25rem;
   font-weight: 600;
   display: flex;
@@ -139,9 +135,9 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     isPrimary
       ? "linear-gradient(45deg, #EE10B0, #FF69B4)"
       : "#1E1E1E"};
-  color: ${({ isPrimary }) => (isPrimary ? "#fff" : "#EE10B0")};
+  color: #fff;
   border: ${({ isPrimary }) =>
-    !isPrimary ? "none" : "2px solid #EE10B0"};
+    isPrimary ? "none" : "1px solid #EE10B0"};
 
   &::before {
     content: '';
@@ -153,7 +149,7 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     background: ${({ isPrimary }) =>
       !isPrimary
         ? "linear-gradient(45deg, #545253, #1E1E1E)"
-        : "linear-gradient(45deg, #EE10B0, #FF69B4)"};
+        : "linear-gradient(45deg, #b16f9e, #FF69B4)"};
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -164,6 +160,7 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
       opacity: 1;
     }
     color: #fff;
+    box-shadow: 0 0 4px #FFF;
     border-color: transparent;
    
   }
@@ -181,3 +178,9 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     z-index: 1;
   }
 `;
+const Title=styled.h2`
+  font-family: sans-serif,serif;
+  font-size: 26px;
+  font-weight: 500;
+  color:#FFF
+`

@@ -1,5 +1,4 @@
 import { Songs } from "@src/component/Item/interface";
-import React from "react";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
@@ -8,47 +7,48 @@ export const TopMusic = ({
   data,
   title,
   type,
-  componentIcon,
+  componentIcon: ComponentIcon,
   color,
 }: {
   data: Songs[];
   title?: string;
   type?: string;
-  componentIcon: IconType;
+  componentIcon?: IconType;
   color: string;
 }) => {
-  const Icon = componentIcon;
   return (
     <Container>
       <Header>
         <Title>{title}</Title>
-        <Type style={{ color: color }}>{type}</Type>
+        <Type style={{ color }}>{type}</Type>
       </Header>
-      <MusicList>
-        {data &&
-          data.map((item, index) => (
-            <MusicItem key={index}>
-              <MusicImage src={item.src} alt={`${index}`} />
-              <ContentWrapper>
-                <TextWrapper>
-                  <SongTitle>{item.nameSong}</SongTitle>
-                  <Details>
-                    <SingerName>{item.nameSinger}</SingerName>
-                  </Details>
-                </TextWrapper>
-                <IconWrapper>
-                  <Icon color={color} size={16} />
-                </IconWrapper>
-              </ContentWrapper>
-            </MusicItem>
-          ))}
+      <div className="inline-flex">
+        <MusicList>
+          {data &&
+            data.map((item, index) => (
+              <MusicItem key={index}>
+                <MusicImage src={item.src} alt={`${index}`} />
+                <ContentWrapper>
+                  <TextWrapper>
+                    <SongTitle>{item.nameSong}</SongTitle>
+                    <Details>
+                      <SingerName>{item.nameSinger}</SingerName>
+                    </Details>
+                  </TextWrapper>
+                  <IconWrapper>
+                    {ComponentIcon ? <ComponentIcon size={16} color={color}/> : null} {/* Dynamic Icon */}
+                  </IconWrapper>
+                </ContentWrapper>
+              </MusicItem>
+            ))}
+        </MusicList>
         <ViewAllContainer>
           <AddButton>
             <FaPlus color="#FFF" size={24} />
           </AddButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
-      </MusicList>
+      </div>
     </Container>
   );
 };
@@ -56,8 +56,6 @@ export const TopMusic = ({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: auto;
-
 `;
 
 const Header = styled.div`
@@ -70,8 +68,8 @@ const Title = styled.h1`
   color: #fff;
   font-size: 32px;
   font-weight: 500;
-  overflow: hidden;
 `;
+
 const Type = styled.h1`
   color: #ee10b0;
   font-size: 32px;
@@ -83,23 +81,26 @@ const MusicList = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  overflow-x: visible;
-  max-width: calc(100% - 50px);
 `;
 
-const MusicItem = styled.div`
+const MusicItem = styled.button`
   padding: 10px;
   background-color: #1f1f1f;
   border-radius: 10px;
-  position: relative; 
-  width: 180px;
+  width: 169px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 5px 5px #000;
+    transform: scale(1.01);
+  }
 `;
 
 const MusicImage = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 10px;
-  object-fit: contain;
+  border-radius: 8px;
+  object-fit: cover; /* Ensure image covers the container */
 `;
 
 const ContentWrapper = styled.div`
@@ -107,7 +108,7 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 150px;
-  position: relative; 
+  position: relative;
   margin-top: 9px;
 `;
 
@@ -116,10 +117,11 @@ const TextWrapper = styled.div`
 `;
 
 const SongTitle = styled.h2`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #fff;
-  max-width: 150px;
+  width: 125px;
+  text-align: start;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -138,9 +140,9 @@ const SingerName = styled.h3`
 
 const IconWrapper = styled.div`
   position: absolute;
-  right: 0px; 
-  top: 50%; 
-  transform: translateY(-50%); 
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
 `;
 
@@ -149,6 +151,7 @@ const ViewAllContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 16px;
 `;
 
 const AddButton = styled.button`
@@ -165,7 +168,7 @@ const AddButton = styled.button`
 `;
 
 const ViewAllText = styled.h3`
- color: #fff;
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   margin-top: 8px;
