@@ -30,7 +30,7 @@ export const ListMusicTrending = ({  }) => {
             <SongList>
                 {DATA_ALBUMS.map((song, index) => (
                     <SongItem key={song.id}>
-                        {index!=0?<Rank>{index + 1}</Rank>:<Image src={require('../img/top.png')}/>}
+                        {index!=0?<Rank>{index + 1}</Rank>:<Image src={require('src/assets/images/albums/top.png')}/>}
                         <SongContent>
                             <div className="inline-flex gap-4">
                                 <ImageWrapper>

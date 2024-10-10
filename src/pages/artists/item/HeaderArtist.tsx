@@ -32,7 +32,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     height: 422px;
-    background-image: url(${() => require('../img/bgc_artist.png')});
+    background-image: url(${() => require('src/assets/images/artists//bgc_artist.png')});
     width: 100%;
     padding-top: 30px;
     border-radius: 10px;

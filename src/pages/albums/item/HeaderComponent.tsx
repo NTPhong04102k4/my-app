@@ -28,7 +28,7 @@ export const HeaderAlbums = () => {
                 </div>
             </div>
             <CardMusic>
-                <Image src={require('src/pages/albums/img/album_header.png')}
+                <Image src={require('src/assets/images/albums/album_header.png')}
                 />
 
                 <div className="flex flex-col justify-between">

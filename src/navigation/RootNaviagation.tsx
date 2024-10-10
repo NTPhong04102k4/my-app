@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom"; // Added useLocation
 import Home from "src/pages/home";
 import Discovery from "src/pages/discovery";
 import RecentlyAdded from "src/pages/recentlyAdded";
@@ -10,10 +10,10 @@ import YourPlaylist from "src/pages/yourPlaylist";
 import Favorite from "src/pages/favorite";
 import MostPlayed from "src/pages/mostPlayed";
 import Albums from "src/pages/albums";
-import { LAST_SCREEN } from "src/features/utilCommon";
 import { SideBarComponent } from "src/component/sideBar";
 import styled from "styled-components";
-
+import Login from "src/pages/login";
+import SignUp from "src/pages/signUp";
 
 interface MainContentProps {
   children: React.ReactNode;
@@ -22,8 +22,9 @@ interface MainContentProps {
 export const MainContent: React.FC<MainContentProps> = ({ children }) => {
   return <ContentWrapper>{children}</ContentWrapper>;
 };
-
+const LAST_SCREEN='lastScreen';
 export const RoutesHandler: React.FC = () => {
+  const location = useLocation(); // Get the current location
 
   useEffect(() => {
     const currentPage = {
@@ -33,11 +34,15 @@ export const RoutesHandler: React.FC = () => {
     localStorage.setItem(LAST_SCREEN, JSON.stringify(currentPage));
   }, [location.pathname]);
 
+  const isAuthRoute = location.pathname.includes('/login') || location.pathname.includes('/signUp');
+
   return (
     <Layout>
-      <SidebarWrapper>
-        <SideBarComponent />
-      </SidebarWrapper>
+      {!isAuthRoute && (
+        <SidebarWrapper>
+          <SideBarComponent />
+        </SidebarWrapper>
+      )}
       <MainContent>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -51,11 +56,14 @@ export const RoutesHandler: React.FC = () => {
           <Route path="/setting" element={<SettingPages />} />
           <Route path="/addPlaylist" element={<AddPlaylist />} />
           <Route path="/yourPlaylist" element={<YourPlaylist />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signUp' element={<SignUp />} />
         </Routes>
       </MainContent>
     </Layout>
   );
 };
+
 const Layout = styled.div`
   display: flex;
 `;
@@ -75,7 +83,7 @@ const SidebarWrapper = styled.div`
     right: -2px;
     bottom: 0;
     width: 2px;
-    background-color: #EE10B0; // Đảm bảo viền màu ban đầu vẫn hiển thị rõ
+    background-color: #EE10B0;
     z-index: 2;
   }
 `;

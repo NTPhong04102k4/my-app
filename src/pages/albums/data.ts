@@ -69,7 +69,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 7,
     playtime: 144,
     dateRelease: "Jan 2, 2024",
-    src: require("src/pages/albums/img/push_your_limit.png"),
+    src: require("src/assets/images/albums/push_your_limit.png"),
     description: "Push your limits",
   },
   {
@@ -78,7 +78,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 8,
     playtime: 185,
     dateRelease: "Dec 12, 2023",
-    src: require("src/pages/albums/img/houdini.png"),
+    src: require("src/assets/images/albums/houdini.png"),
     description: "Houdini",
   },
   {
@@ -87,7 +87,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 9,
     playtime: 197,
     dateRelease: "Nov 20, 2023",
-    src: require("src/pages/albums/img/lala.png"),
+    src: require("src/assets/images/albums/lala.png"),
     description: "La vida es una",
   },
 
@@ -97,7 +97,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 10,
     playtime: 100,
     dateRelease: "Sep 9, 2023",
-    src: require("src/pages/albums/img/i_wanna_be_your.png"),
+    src: require("src/assets/images/albums/i_wanna_be_your.png"),
     description: "AM",
   },
   {
@@ -106,7 +106,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 11,
     playtime: 150,
     dateRelease: "Jul 5, 2023",
-    src: require("src/pages/albums/img/paradise.png"),
+    src: require("src/assets/images/albums/paradise.png"),
     description: "Paradise",
   },
   {
@@ -115,7 +115,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 12,
     playtime: 167,
     dateRelease: "Sep 14, 2022",
-    src: require("src/pages/albums/img/as_it_was.png"),
+    src: require("src/assets/images/albums/as_it_was.png"),
     description: "As It Was",
   },
   {
@@ -124,7 +124,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 13,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/another_love.png"),
+    src: require("src/assets/images/albums/another_love.png"),
     description: "Water",
   },
   {
@@ -133,7 +133,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 14,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/daylight.png"),
+    src: require("src/assets/images/albums/daylight.png"),
     description: "Water",
   },
   {
@@ -142,7 +142,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 15,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/beggin.png"),
+    src: require("src/assets/images/albums/beggin.png"),
     description: "Water",
   },
   {
@@ -151,7 +151,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 16,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/what-was_i_made.png"),
+    src: require("src/assets/images/albums/what-was_i_made.png"),
     description: "Water",
   },
   {
@@ -160,7 +160,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 17,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/daddy_issues.png"),
+    src: require("src/assets/images/albums/daddy_issues.png"),
     description: "Water",
   },
   {
@@ -169,7 +169,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 18,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/rolling_in_the_deep.png"),
+    src: require("src/assets/images/albums/rolling_in_the_deep.png"),
     description: "Water",
   },
   {
@@ -178,7 +178,7 @@ export const DATA_ALBUMS: SongTrending[] = [
     id: 19,
     playtime: 100,
     dateRelease: "Dec 10, 2023",
-    src: require("src/pages/albums/img/one_shot.png"),
+    src: require("src/assets/images/albums/one_shot.png"),
     description: "Water",
   },
 ];

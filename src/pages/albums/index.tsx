@@ -1,4 +1,4 @@
-import { SideBarComponent } from "src/component/sideBar";
+// import { SideBarComponent } from "src/component/sideBar";
 import React from "react";
 import styled from "styled-components";
 import { HeaderAlbums } from "./item/HeaderComponent";

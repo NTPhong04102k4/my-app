@@ -1,4 +1,4 @@
-import { SongTrending } from "@src/component/Item/interface";
+import { SongTrending } from "src/component/Item/interface";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";

@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 import textGradientPlugin from "./src/styles/customLinearGardientText.ts";
-import scrollbarHidePlugin from "./src/styles/scroolBarHidden.ts";
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,html,css}"],
@@ -18,6 +17,5 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     textGradientPlugin,
-    scrollbarHidePlugin,
   ],
 };

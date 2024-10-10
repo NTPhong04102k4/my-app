@@ -1,7 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Singer } from "@src/component/Item/interface";
+// import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
+import { Singer } from "src/component/Item/interface";
 
 export function TopArtist({ data, title, color, type }: { data: Singer[]; title: string, color: string, type: string }) {
   return (

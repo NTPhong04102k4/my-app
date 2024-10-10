@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Singer } from "@src/component/Item/interface";
+import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
 
 export function TopSinger({ data, title ,color}: { data: Singer[]; title: string,color:string }) {

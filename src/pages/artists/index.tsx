@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HeaderArtist } from "./item/HeaderArtist";
 import { PopularMusic } from "./item/ArtistItem";
 import FooterComponent from "src/component/footer";
-import { TopMusic } from "src/component/ItemComponent/TopMusicFavorites";
+// import { TopMusic } from "src/component/ItemComponent/TopMusicFavorites";
 import { DATA_ARTIST_ALBUMS, DATA_ARTIST_OTHER, DATA_ARTIST_PLAYLIST, DATA_SINGLE_SONG } from "./data";
 import { TopAlbums } from "./item/TopAlbums";
 import { TopPlaylistArtist } from "./item/PlaylistArtist";

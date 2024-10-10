@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export function HeaderComponent() {
+  const navigate=useNavigate();
   return (
     <HeaderContainer>
       <SearchContainer>
@@ -23,10 +25,10 @@ export function HeaderComponent() {
         </NavButton>
       </NavContainer>
       <AuthContainer>
-        <AuthButton isPrimary={false}>
+        <AuthButton isPrimary={false} onClick={()=>{navigate('login')}}>
           <span>Login</span>
         </AuthButton>
-        <AuthButton isPrimary>
+        <AuthButton isPrimary onClick={()=>{navigate('signUp')}}>
           <span>Sign Up</span>
         </AuthButton>
       </AuthContainer>

@@ -1,4 +1,4 @@
-import { PlayList } from "@src/component/Item/interface";
+import { PlayList } from "src/component/Item/interface";
 import React from "react";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";

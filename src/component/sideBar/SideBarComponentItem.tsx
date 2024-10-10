@@ -1,8 +1,11 @@
 import React, { useCallback } from "react";
 import { IconType } from "react-icons";
 import styled from "styled-components";
-import { selectPages } from "src/features/utilCommon";
-
+export interface selectPages {
+  id: number;
+  name: string;
+  path: string;
+}
 type Pages = {
   componentIcon: IconType;
   id: number;

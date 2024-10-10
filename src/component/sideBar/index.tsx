@@ -2,8 +2,17 @@ import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SIDE_BAR } from "./data";
 import { SideBarComponentItem } from "./SideBarComponentItem";
-import { defaultPages, LAST_SCREEN, selectPages } from "src/features/utilCommon";
-
+export interface selectPages {
+  id: number;
+  name: string;
+  path: string;
+}
+const defaultPages = {
+  id: 0,
+  name: "Home",
+  path: "/home",
+};
+const LAST_SCREEN='lastScreen';
 export const SideBarComponent = React.memo(() => {
   const navigate = useNavigate();
   const [selectedPages, setSelectedPages] = useState<selectPages | null>(defaultPages);
