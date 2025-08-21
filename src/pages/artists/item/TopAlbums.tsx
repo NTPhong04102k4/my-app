@@ -2,6 +2,7 @@ import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
 import { AlbumsArtist } from "../data";
+import { IconComponent } from "../../../component/footer";
 
 export const TopAlbums = ({
   data,
@@ -36,7 +37,14 @@ export const TopAlbums = ({
                     </Details>
                   </TextWrapper>
                   <IconWrapper>
-                    {ComponentIcon ? <ComponentIcon size={16} color={color}/> : null} {/* Dynamic Icon */}
+                    {ComponentIcon ? (
+                      <IconComponent
+                        icon={ComponentIcon}
+                        size={16}
+                        color={color}
+                      />
+                    ) : null}{" "}
+                    {/* Dynamic Icon */}
                   </IconWrapper>
                 </ContentWrapper>
               </MusicItem>
@@ -44,7 +52,7 @@ export const TopAlbums = ({
         </MusicList>
         <ViewAllContainer>
           <AddButton>
-            <FaPlus color="#FFF" size={24} />
+            <IconComponent icon={FaPlus} color="#FFF" size={24} />
           </AddButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
@@ -88,7 +96,9 @@ const MusicItem = styled.button`
   background-color: #1f1f1f;
   border-radius: 10px;
   width: 165px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     box-shadow: 0px 5px 5px #000;

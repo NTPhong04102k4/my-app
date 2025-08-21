@@ -6,6 +6,29 @@ import { SiInstagram } from "react-icons/si";
 import { CiTwitter } from "react-icons/ci";
 import { featFooter, FeaturesFooter } from "./data";
 
+export const IconComponent = ({
+  icon: Icon,
+  size = 24,
+  color = "white",
+  onClick,
+  style,
+}: {
+  icon: any;
+  size?: number;
+  color?: string;
+  onClick?: () => void;
+  style?: React.CSSProperties;
+}) => {
+  try {
+    return <Icon size={size} color={color} onClick={onClick} />;
+  } catch (error) {
+    console.error("Error rendering social icon:", error);
+    return (
+      <div style={{ width: size, height: size, backgroundColor: color }} />
+    );
+  }
+};
+
 export const FooterComponent = () => (
   <FooterContainer>
     <AboutSection>
@@ -27,17 +50,17 @@ export const FooterComponent = () => (
     <LogoSection>
       <LogoText>Medolias</LogoText>
       <SocialButtonsWrapper>
-        <SocialButton>
-          <AiOutlineFacebook size={24} color="white" />
+        <SocialButton onClick={() => console.log("Facebook clicked")}>
+          <IconComponent icon={AiOutlineFacebook} size={24} color="white" />
         </SocialButton>
-        <SocialButton>
-          <SiInstagram size={24} color="white" />
+        <SocialButton onClick={() => console.log("Instagram clicked")}>
+          <IconComponent icon={SiInstagram} size={24} color="white" />
         </SocialButton>
-        <SocialButton>
-          <CiTwitter size={24} color="white" />
+        <SocialButton onClick={() => console.log("Twitter clicked")}>
+          <IconComponent icon={CiTwitter} size={24} color="white" />
         </SocialButton>
-        <SocialButton>
-          <IoCallOutline size={24} color="white" />
+        <SocialButton onClick={() => console.log("Call clicked")}>
+          <IconComponent icon={IoCallOutline} size={24} color="white" />
         </SocialButton>
       </SocialButtonsWrapper>
     </LogoSection>
@@ -51,9 +74,7 @@ const FeaturesItem = ({ item }: { item: FeaturesFooter }) => (
     <FeatureList>
       {item.data &&
         item.data.map((dataItem) => (
-          <FeatureButton key={dataItem?.id}>
-            {dataItem.features}
-          </FeatureButton>
+          <FeatureButton key={dataItem?.id}>{dataItem.features}</FeatureButton>
         ))}
     </FeatureList>
   </FeatureColumn>
@@ -74,20 +95,20 @@ const AboutSection = styled.div`
 
 const AboutTitle = styled.h1`
   font-size: 40px;
-  color: #FFF;
+  color: #fff;
   height: 63px;
 `;
 
 const AboutText = styled.p`
   font-size: 16px;
-  color: #FFF;
+  color: #fff;
   line-height: 1.5;
 `;
 
 const HighlightText = styled.span<{ color: string }>`
-  color: ${props => props.color};
+  color: ${(props) => props.color};
   transition: all 0.3s ease;
-  
+
   &:hover {
     text-decoration: underline;
     font-weight: 600;
@@ -107,7 +128,7 @@ const FeatureColumn = styled.div`
 `;
 
 const FeatureTitle = styled.button`
-  color: #FFF;
+  color: #fff;
   font-size: 36px;
   font-weight: bold;
   height: 56px;
@@ -118,7 +139,7 @@ const FeatureTitle = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    color: #EE10B0;
+    color: #ee10b0;
   }
 `;
 
@@ -136,7 +157,7 @@ const FeatureList = styled.div`
 `;
 
 const FeatureButton = styled.button`
-  color: #FFF;
+  color: #fff;
   font-size: 1.5rem;
   height: 38px;
   text-align: center;
@@ -146,7 +167,7 @@ const FeatureButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    color: #0E9EEF;
+    color: #0e9eef;
   }
 `;
 
@@ -160,7 +181,7 @@ const LogoSection = styled.div`
 const LogoText = styled.h1`
   font-size: 40px;
   font-weight: bold;
-  background: linear-gradient(to right, #EE10B0, #0E9EEF);
+  background: linear-gradient(to right, #ee10b0, #0e9eef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -179,7 +200,7 @@ const SocialButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(2.0);
+    transform: scale(2);
   }
 `;
 

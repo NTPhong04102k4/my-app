@@ -2,31 +2,40 @@ import React from "react";
 import styled from "styled-components";
 import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
+import { IconComponent } from "../footer";
 
-export function TopSinger({ data, title ,color}: { data: Singer[]; title: string,color:string }) {
+export function TopSinger({
+  data,
+  title,
+  color,
+}: {
+  data: Singer[];
+  title: string;
+  color: string;
+}) {
   return (
     <Container>
       <Title>{title}</Title>
       <div className="inline-flex">
-      <SingerList>
-        {data &&
-          data.map((item, index) => (
-            <SingerItem key={index}>
-              <ImageContainer>
-                <SingerImage src={item.srcImg} alt="Singer Image" />
-              </ImageContainer>
-              <SingerName>{item.name}</SingerName>
-            </SingerItem>
-          ))}
-      
-      </SingerList>
+        <SingerList>
+          {data &&
+            data.map((item, index) => (
+              <SingerItem key={index}>
+                <ImageContainer>
+                  <SingerImage src={item.srcImg} alt="Singer Image" />
+                </ImageContainer>
+                <SingerName>{item.name}</SingerName>
+              </SingerItem>
+            ))}
+        </SingerList>
 
-      <ViewAllContainer>
+        <ViewAllContainer>
           <ViewAllButton>
-            <FaPlus color="#FFF" size={24} />
+            <IconComponent icon={FaPlus} color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
-        </ViewAllContainer></div>
+        </ViewAllContainer>
+      </div>
     </Container>
   );
 }
@@ -74,14 +83,14 @@ const ImageContainer = styled.div`
   height: 130px;
   width: 130px;
   background-position: center;
-  transition: tranform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    tranform 0.3s ease,
+    box-shadow 0.3s ease;
 
-  :hover{
+  :hover {
     box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.3);
     scale: 1.05;
-
   }
-  
 `;
 
 const SingerImage = styled.img`
@@ -90,7 +99,6 @@ const SingerImage = styled.img`
   border-radius: 50%;
   object-fit: fill;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
- 
 `;
 
 const SingerName = styled.h1`
@@ -117,7 +125,9 @@ const ViewAllButton = styled.div`
   background-color: #1e1e1e;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   &:hover {
     background-color: #2e2e2e;
     transform: scale(1.1);

@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { IconComponent } from "../footer";
 
 export function HeaderComponent() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
       <SearchContainer>
         <SearchButton>
-          <MdOutlineSearch size={24} />
+          <IconComponent icon={MdOutlineSearch} size={24} />
         </SearchButton>
         <SearchInput placeholder="Search For Musics, Artists, Albums ..." />
       </SearchContainer>
@@ -25,10 +26,20 @@ export function HeaderComponent() {
         </NavButton>
       </NavContainer>
       <AuthContainer>
-        <AuthButton isPrimary={false} onClick={()=>{navigate('login')}}>
+        <AuthButton
+          isPrimary={false}
+          onClick={() => {
+            navigate("login");
+          }}
+        >
           <span>Login</span>
         </AuthButton>
-        <AuthButton isPrimary onClick={()=>{navigate('signUp')}}>
+        <AuthButton
+          isPrimary
+          onClick={() => {
+            navigate("signUp");
+          }}
+        >
           <span>Sign Up</span>
         </AuthButton>
       </AuthContainer>
@@ -51,7 +62,7 @@ const SearchContainer = styled.div`
   box-shadow: 0 4px 5px rgba(44, 42, 42, 0.3);
   transition: box-shadow 0.3s ease;
 
- &:focus-within {
+  &:focus-within {
     box-shadow: 0 0 2px #e9e6e8;
   }
 `;
@@ -68,7 +79,7 @@ const SearchButton = styled.button`
 `;
 
 const SearchInput = styled.input`
-  width: 270px;  
+  width: 270px;
   background: inherit;
   border: 0.1px solid #656565;
   color: white;
@@ -78,7 +89,7 @@ const SearchInput = styled.input`
     border-color 0.3s ease,
     box-shadow 0.3s ease;
   ::placeholder {
-    color: #FFF;
+    color: #fff;
     font-weight: 500;
   }
 
@@ -115,7 +126,6 @@ const AuthContainer = styled.div`
   justify-content: flex-end;
   flex: 0 1 auto;
   /* padding-right: 30px; */
-
 `;
 
 const AuthButton = styled.button<{ isPrimary?: boolean }>`
@@ -134,15 +144,12 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
   overflow: hidden;
 
   background: ${({ isPrimary }) =>
-    isPrimary
-      ? "linear-gradient(45deg, #EE10B0, #FF69B4)"
-      : "#1E1E1E"};
+    isPrimary ? "linear-gradient(45deg, #EE10B0, #FF69B4)" : "#1E1E1E"};
   color: #fff;
-  border: ${({ isPrimary }) =>
-    isPrimary ? "none" : "1px solid #EE10B0"};
+  border: ${({ isPrimary }) => (isPrimary ? "none" : "1px solid #EE10B0")};
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -162,17 +169,14 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
       opacity: 1;
     }
     color: #fff;
-    box-shadow: 0 0 4px #FFF;
+    box-shadow: 0 0 4px #fff;
     border-color: transparent;
-   
   }
 
   &:active {
     transform: scale(0.98);
     box-shadow: ${({ isPrimary }) =>
-      !isPrimary
-        ? "0 0 15px #1E1E1E"
-        : "0 0 15px rgba(238, 16, 176, 0.8)"};
+      !isPrimary ? "0 0 15px #1E1E1E" : "0 0 15px rgba(238, 16, 176, 0.8)"};
   }
 
   span {
@@ -180,9 +184,9 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     z-index: 1;
   }
 `;
-const Title=styled.h2`
-  font-family: sans-serif,serif;
+const Title = styled.h2`
+  font-family: sans-serif, serif;
   font-size: 26px;
   font-weight: 500;
-  color:#FFF
-`
+  color: #fff;
+`;

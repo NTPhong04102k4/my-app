@@ -3,12 +3,13 @@ import React from "react";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
+import { IconComponent } from "../../../component/footer";
 
 export function TopPlaylistArtist({
   data,
   title,
   type,
-  componentIcon:ComponentIcon,
+  componentIcon: ComponentIcon,
   color,
 }: {
   data: PlayList[];
@@ -17,7 +18,6 @@ export function TopPlaylistArtist({
   componentIcon?: IconType;
   color: string;
 }) {
-
   return (
     <Container>
       <Header>
@@ -25,22 +25,27 @@ export function TopPlaylistArtist({
         <Type style={{ color: color }}>{type}</Type>
       </Header>
       <div className="inline-flex">
-      <PlaylistWrapper>
-        {data &&
-          data.map((item, index) => (
-            <PlaylistItem key={index}>
-              <Image src={item.src} alt={`${index}`} />
-              <ItemInfo>
-                <Name>{item.name}</Name>
-                {ComponentIcon?<ComponentIcon size={16} color={color}/>:null}
-              </ItemInfo>
-            </PlaylistItem>
-          ))}
-   
-      </PlaylistWrapper>
-      <ViewAllContainer>
+        <PlaylistWrapper>
+          {data &&
+            data.map((item, index) => (
+              <PlaylistItem key={index}>
+                <Image src={item.src} alt={`${index}`} />
+                <ItemInfo>
+                  <Name>{item.name}</Name>
+                  {ComponentIcon ? (
+                    <IconComponent
+                      icon={ComponentIcon}
+                      size={16}
+                      color={color}
+                    />
+                  ) : null}
+                </ItemInfo>
+              </PlaylistItem>
+            ))}
+        </PlaylistWrapper>
+        <ViewAllContainer>
           <ViewAllButton>
-            <FaPlus color="#FFF" size={24} />
+            <IconComponent icon={FaPlus} color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
@@ -78,7 +83,7 @@ const PlaylistWrapper = styled.div`
   gap: 16px;
   align-items: center;
 `;
- 
+
 const PlaylistItem = styled.button`
   background-color: #1f1f1f;
   border-radius: 10px;
@@ -87,7 +92,9 @@ const PlaylistItem = styled.button`
   padding-bottom: 8px;
   height: auto;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   &:hover {
     box-shadow: 0 4px 8px #000;
     transform: scale(1.01);

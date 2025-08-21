@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { IconType } from "react-icons";
 import styled from "styled-components";
+import { IconComponent } from "../footer";
 export interface selectPages {
   id: number;
   name: string;
@@ -39,9 +40,9 @@ export const SideBarComponentItem = ({
   );
 
   const getColor = (pageId: number, isActive: boolean) => {
-    if (pageId === 8) return '#0E9EEF';
-    if (pageId === 10) return '#ee10b0';
-    return  '#FFF';
+    if (pageId === 8) return "#0E9EEF";
+    if (pageId === 10) return "#ee10b0";
+    return "#FFF";
   };
 
   return (
@@ -58,9 +59,15 @@ export const SideBarComponentItem = ({
           >
             <ContentWrapper isActive={isActive}>
               <IconWrapper>
-                <Icon size={20} color={getColor(page.id, isActive)} />
+                <IconComponent
+                  icon={Icon}
+                  size={20}
+                  color={getColor(page.id, isActive)}
+                />
               </IconWrapper>
-              <NamePage style={{color:getColor(page.id, isActive)}} >{page.name}</NamePage>
+              <NamePage style={{ color: getColor(page.id, isActive) }}>
+                {page.name}
+              </NamePage>
             </ContentWrapper>
           </NavItemButton>
         );
@@ -71,7 +78,7 @@ export const SideBarComponentItem = ({
 
 const NavItemButton = styled.button<{ isActive: boolean }>`
   width: 180px;
-  height: 40px; 
+  height: 40px;
   background: ${({ isActive }) => (isActive ? " #EE10B0 " : "transparent")};
   border: ${({ isActive }) => (isActive ? "0.5px solid #EE10B0" : "none")};
   box-shadow: ${({ isActive }) => (isActive ? "0 0 4px #000000" : "none")};
@@ -81,7 +88,6 @@ const NavItemButton = styled.button<{ isActive: boolean }>`
   transition: all 0.2s ease;
   transform: ${({ isActive }) => (isActive ? "scale(1.05)" : "scale(1)")};
 `;
-
 
 const IconWrapper = styled.div`
   display: flex;
@@ -105,7 +111,7 @@ const Title = styled.h3`
 `;
 
 const NamePage = styled.h3`
-  color:  #FFF;
+  color: #fff;
   font-size: 16px;
   font-weight: normal;
 `;

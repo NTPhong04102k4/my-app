@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { IconComponent } from "../footer";
 export function TopTrending({
   data,
   title,
@@ -13,17 +14,16 @@ export function TopTrending({
 }) {
   const [arrIsSelect, setArrIsSelect] = useState<Number[]>([]);
 
-  const isSelected = (id: number) => arrIsSelect.some(isSelectedId => isSelectedId === id);
+  const isSelected = (id: number) =>
+    arrIsSelect.some((isSelectedId) => isSelectedId === id);
   const handleClick = useCallback((id: number) => {
-
-    setArrIsSelect(prev => {
-      if (prev?.some(isIdSelected => isIdSelected == id)) {
-        return (prev.filter(isIdSelected => isIdSelected !== id))
-
-      };
+    setArrIsSelect((prev) => {
+      if (prev?.some((isIdSelected) => isIdSelected == id)) {
+        return prev.filter((isIdSelected) => isIdSelected !== id);
+      }
       return [...prev, id];
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <Container>
@@ -48,27 +48,35 @@ export function TopTrending({
                 <div className="flex-col align-middle justify-center flex">
                   <SongDetails>{song.nameSong}</SongDetails>
                   <Artist>{song.nameSinger}</Artist>
-                </div></div>
+                </div>
+              </div>
               <ReleaseDate>{song.dateRelease}</ReleaseDate>
               <DescriptionAblums>{song.description}</DescriptionAblums>
               <div className="inline-flex align-middle justify-center gap-[10px]">
                 <IconWrapper onClick={() => handleClick(song.id)}>
                   <FilledHeart isSelected={isSelected(song.id)}>
-                    <FaHeart color="#ee10b0" size={24} />
+                    <IconComponent icon={FaHeart} color="#ee10b0" size={24} />
                   </FilledHeart>
                   <OutlinedHeart isSelected={isSelected(song.id)}>
-                    <FaRegHeart color="#ee10b0" size={24} />
+                    <IconComponent
+                      icon={FaRegHeart}
+                      color="#ee10b0"
+                      size={24}
+                    />
                   </OutlinedHeart>
                 </IconWrapper>
                 <Time>
                   {Math.floor(song.playtime / 60)}:
                   {(song.playtime % 60).toString().padStart(2, "0")}
-                </Time></div>
+                </Time>
+              </div>
             </SongContent>
           </SongItem>
         ))}
         <Expand>
-          <Text><FaPlus /> Xem thêm</Text>
+          <Text>
+            <IconComponent icon={FaPlus} /> Xem thêm
+          </Text>
         </Expand>
       </SongList>
     </Container>
@@ -76,9 +84,9 @@ export function TopTrending({
 }
 
 const Container = styled.div`
- display: flex;
- flex-direction: column;
-width: 984px;
+  display: flex;
+  flex-direction: column;
+  width: 984px;
 `;
 
 const Title = styled.h1`
@@ -172,24 +180,22 @@ const DescriptionAblums = styled.p`
   font-size: 0.875rem;
   color: white;
   text-align: center;
-  
 `;
 const Expand = styled.button`
   border-radius: 4px;
   background-color: #1e1e1e;
-  :hover{
+  :hover {
     box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3);
-   };
-   align-self: center;
-   transition: box-shadow 0.3s;
-   
+  }
+  align-self: center;
+  transition: box-shadow 0.3s;
 `;
 const Text = styled.h4`
   padding-right: 16px;
   padding-left: 16px;
   padding-top: 6px;
   padding-bottom: 6px;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-family: sans-serif;
   font-weight: 400;
@@ -198,28 +204,29 @@ const Text = styled.h4`
   align-items: center;
   justify-content: center;
   gap: 6px;
-
 `;
 const IconWrapper = styled.div`
-position: relative;
-width: 24px;
-height: 24px;
-cursor: pointer;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;
 
 const IconStyle = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 `;
 
-const FilledHeart = styled(IconStyle) <{ isSelected: boolean }>`
-opacity: ${props => props.isSelected ? 1 : 0};
-transform: ${props => props.isSelected ? 'scale(1)' : 'scale(0.8)'};
+const FilledHeart = styled(IconStyle)<{ isSelected: boolean }>`
+  opacity: ${(props) => (props.isSelected ? 1 : 0)};
+  transform: ${(props) => (props.isSelected ? "scale(1)" : "scale(0.8)")};
 `;
 
-const OutlinedHeart = styled(IconStyle) <{ isSelected: boolean }>`
-opacity: ${props => props.isSelected ? 0 : 1};
-transform: ${props => props.isSelected ? 'scale(1.5)' : 'scale(1)'};
+const OutlinedHeart = styled(IconStyle)<{ isSelected: boolean }>`
+  opacity: ${(props) => (props.isSelected ? 0 : 1)};
+  transform: ${(props) => (props.isSelected ? "scale(1.5)" : "scale(1)")};
 `;

@@ -3,8 +3,19 @@ import styled, { keyframes } from "styled-components";
 // import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
 import { Singer } from "src/component/Item/interface";
+import { IconComponent } from "../../../component/footer";
 
-export function TopArtist({ data, title, color, type }: { data: Singer[]; title: string, color: string, type: string }) {
+export function TopArtist({
+  data,
+  title,
+  color,
+  type,
+}: {
+  data: Singer[];
+  title: string;
+  color: string;
+  type: string;
+}) {
   return (
     <Container>
       <Header>
@@ -13,18 +24,22 @@ export function TopArtist({ data, title, color, type }: { data: Singer[]; title:
       </Header>
       <div className="inline-flex">
         <SingerList>
-          {data && data.map((item, index) => (
-            <SingerItem key={index} style={{ animationDelay: `${index * 0.1}s` }}>
-              <ImageContainer>
-                <SingerImage src={item.srcImg} alt="Singer Image" />
-              </ImageContainer>
-              <SingerName>{item.name}</SingerName>
-            </SingerItem>
-          ))}
+          {data &&
+            data.map((item, index) => (
+              <SingerItem
+                key={index}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ImageContainer>
+                  <SingerImage src={item.srcImg} alt="Singer Image" />
+                </ImageContainer>
+                <SingerName>{item.name}</SingerName>
+              </SingerItem>
+            ))}
         </SingerList>
         <ViewAllContainer>
           <ViewAllButton>
-            <FaPlus color="#FFF" size={24} />
+            <IconComponent icon={FaPlus} color="#FFF" size={24} />
           </ViewAllButton>
           <ViewAllText>View All</ViewAllText>
         </ViewAllContainer>
@@ -97,7 +112,9 @@ const ImageContainer = styled.div`
   height: 179px;
   width: 179px;
   background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   overflow: hidden;
 
   &:hover {
@@ -150,7 +167,10 @@ const ViewAllButton = styled.div`
   background-color: #1e1e1e;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     background-color: #2e2e2e;

@@ -4,21 +4,31 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import styled from "styled-components";
 import { ARTISTS_DETAIL } from "./dataArtist";
 import CustomTextComponent from "./CustomInsertText";
+import { IconComponent } from "../../footer";
 
 const TEXT_TRANSFORMATIONS = [
-  { text: 'Listen now', color: '#EE10B0' },
-  { text: 'Follow', color: '#0E9EEF' },
-  { text: 'follow', color: '#0E9EEF' },
+  { text: "Listen now", color: "#EE10B0" },
+  { text: "Follow", color: "#0E9EEF" },
+  { text: "follow", color: "#0E9EEF" },
 ];
 
 const formatDescription = (description: string) => {
-  const regex = new RegExp(`(${TEXT_TRANSFORMATIONS.map(t => t.text).join('|')})`, 'g');
+  const regex = new RegExp(
+    `(${TEXT_TRANSFORMATIONS.map((t) => t.text).join("|")})`,
+    "g"
+  );
 
   return description.split(regex).map((part, index) => {
-    const transformation = TEXT_TRANSFORMATIONS.find(t => t.text === part);
-    return transformation
-      ? <CustomTextComponent key={index} text={transformation.text} color={transformation.color} />
-      : part;
+    const transformation = TEXT_TRANSFORMATIONS.find((t) => t.text === part);
+    return transformation ? (
+      <CustomTextComponent
+        key={index}
+        text={transformation.text}
+        color={transformation.color}
+      />
+    ) : (
+      part
+    );
   });
 };
 
@@ -30,17 +40,21 @@ export const ImageSlide = () => {
   };
 
   const handlePrevClick = () => {
-    setCurrentIndex(prev => (prev === 0 ? ARTISTS_DETAIL.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? ARTISTS_DETAIL.length - 1 : prev - 1
+    );
   };
 
   const handleNextClick = () => {
-    setCurrentIndex(prev => (prev === ARTISTS_DETAIL.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === ARTISTS_DETAIL.length - 1 ? 0 : prev + 1
+    );
   };
 
   return (
     <Container>
-      <ButtonNav style={{ marginRight:16 }} onClick={handlePrevClick}>
-        <MdNavigateBefore size={50} />
+      <ButtonNav style={{ marginRight: 16 }} onClick={handlePrevClick}>
+        <IconComponent icon={MdNavigateBefore} size={50} />
       </ButtonNav>
       <ContentContainer
         style={{
@@ -68,7 +82,7 @@ export const ImageSlide = () => {
         </GroupDotSlide>
       </ContentContainer>
       <ButtonNav style={{ marginLeft: 16 }} onClick={handleNextClick}>
-        <MdNavigateNext size={50} />
+        <IconComponent icon={MdNavigateNext} size={50} />
       </ButtonNav>
     </Container>
   );
@@ -190,18 +204,20 @@ const GroupDotSlide = styled.div`
   position: absolute;
   align-items: flex-end;
   left: 50%;
-  bottom:27px;
+  bottom: 27px;
   transform: translateX(-50%);
 `;
 
 const Dot = styled.button<{ isActive: boolean }>`
-  width: ${({ isActive }) => (isActive ? '16px' : '8px')};
+  width: ${({ isActive }) => (isActive ? "16px" : "8px")};
   height: 8px;
-  border-radius: ${({ isActive }) => (isActive ? '25%' : '50%')};
+  border-radius: ${({ isActive }) => (isActive ? "25%" : "50%")};
   background-color: ${({ isActive }) => (isActive ? "#EE10B0" : "#888")};
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-radius 0.3s ease;
 
   &:hover {
     background-color: #ee10b0;
