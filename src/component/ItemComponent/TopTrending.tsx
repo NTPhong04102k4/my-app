@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 export function TopTrending({
   data,
   title,

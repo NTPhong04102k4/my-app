@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 
 export function TopSinger({
   data,

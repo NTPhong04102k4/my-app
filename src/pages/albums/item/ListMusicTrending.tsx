@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { DATA_ALBUMS } from "../data";
 import { PiDotsThreeOutlineFill } from "react-icons/pi";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 
 export const ListMusicTrending = ({}) => {
   const [arrIsSelect, setArrIsSelect] = useState<number[]>([]);

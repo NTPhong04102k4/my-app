@@ -12,8 +12,7 @@ import {
   MdDownload,
   MdHighQuality,
 } from "react-icons/md";
-import { IconComponent } from "src/component/footer";
-import NotificationSettings from "../../components/NotificationSettings";
+import { IconComponent } from "src/component/IconComponent";
 export default function AboutUs() {
   return (
     <Container>
@@ -163,7 +162,6 @@ export default function AboutUs() {
             Đăng ký nhận thông báo về bài hát mới, album mới và các sự kiện âm
             nhạc đặc biệt
           </NotificationDescription>
-          <NotificationSettings />
         </NotificationSection>
       </MainContent>
       <FooterComponent />

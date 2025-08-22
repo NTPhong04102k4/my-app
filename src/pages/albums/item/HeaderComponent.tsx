@@ -5,7 +5,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 
 export const HeaderAlbums = () => {
   const navigate = useNavigate();

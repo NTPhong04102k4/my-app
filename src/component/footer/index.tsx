@@ -5,29 +5,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { SiInstagram } from "react-icons/si";
 import { CiTwitter } from "react-icons/ci";
 import { featFooter, FeaturesFooter } from "./data";
-
-export const IconComponent = ({
-  icon: Icon,
-  size = 24,
-  color = "white",
-  onClick,
-  style,
-}: {
-  icon: any;
-  size?: number;
-  color?: string;
-  onClick?: () => void;
-  style?: React.CSSProperties;
-}) => {
-  try {
-    return <Icon size={size} color={color} onClick={onClick} />;
-  } catch (error) {
-    console.error("Error rendering social icon:", error);
-    return (
-      <div style={{ width: size, height: size, backgroundColor: color }} />
-    );
-  }
-};
+import { IconComponent } from "../IconComponent";
 
 export const FooterComponent = () => (
   <FooterContainer>

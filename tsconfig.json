@@ -17,14 +17,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "plugins": [{ "name": "typescript-styled-plugin" }],
     "paths": {
       "src/*": ["src/*"],
-      "@src/*":["@src/*"],
-
+      "@src/*": ["@src/*"]
     },
-    "noUnusedLocals": false,
-   
-    
+    "noUnusedLocals": false
   },
   "include": ["src"]
 }

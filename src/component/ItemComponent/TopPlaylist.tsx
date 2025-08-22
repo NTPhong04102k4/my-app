@@ -3,7 +3,7 @@ import React from "react";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 
 export function TopPlaylist({
   data,

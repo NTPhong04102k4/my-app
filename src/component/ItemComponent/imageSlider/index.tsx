@@ -4,7 +4,7 @@ import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import styled from "styled-components";
 import { ARTISTS_DETAIL } from "./dataArtist";
 import CustomTextComponent from "./CustomInsertText";
-import { IconComponent } from "../../footer";
+import { IconComponent } from "src/component/IconComponent";
 
 const TEXT_TRANSFORMATIONS = [
   { text: "Listen now", color: "#EE10B0" },

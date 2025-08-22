@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 
 export function HeaderComponent() {
   const navigate = useNavigate();
@@ -81,23 +81,25 @@ const SearchButton = styled.button`
 const SearchInput = styled.input`
   width: 270px;
   background: inherit;
-  border: 0.1px solid #656565;
+  /* border: 0.1px solid #  ; */
   color: white;
   padding: 4px;
+  border-width: 0px;
   border-radius: 4px;
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
   ::placeholder {
     color: #fff;
-    font-weight: 500;
+    font-weight: 400;
   }
 
-  &:focus {
+  /* &:focus {
     outline: none;
     border-color: #716d70;
     box-shadow: 0 0 5px #716d70;
-  }
+    border: 0.1px solid #656565;
+  } */
 `;
 
 const NavContainer = styled.div`

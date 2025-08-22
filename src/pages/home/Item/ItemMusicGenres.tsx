@@ -3,7 +3,7 @@ import { MusicGenres } from "./interfaceHome";
 import { ButtonImage } from "src/styles/ButtonImage";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 type Props = {
   title: string;
   data: MusicGenres[];

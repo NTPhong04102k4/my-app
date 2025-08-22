@@ -3,7 +3,8 @@ import { FaCircleUser } from "react-icons/fa6";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
+import bgc_artist from "src/assets/images/artists/bgc_artist.png";
 export function HeaderArtist() {
   const navigate = useNavigate();
   function handeSettingUser() {
@@ -47,8 +48,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 422px;
-  /* background-image: url(${() =>
-    require("src/assets/images/artists//bgc_artist.png")}); */
+  background-image: url(${bgc_artist});
+  background-repeat: no-repeat;
   width: 100%;
   padding-top: 30px;
   border-radius: 10px;

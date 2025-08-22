@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 // import { Singer } from "src/component/Item/interface";
 import { FaPlus } from "react-icons/fa";
 import { Singer } from "src/component/Item/interface";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 
 export function TopArtist({
   data,

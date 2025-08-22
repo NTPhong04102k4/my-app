@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 import { IconType } from "react-icons";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 type User = {
   name: string;
   phone: string;

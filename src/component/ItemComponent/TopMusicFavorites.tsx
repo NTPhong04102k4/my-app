@@ -2,7 +2,7 @@ import { Songs } from "src/component/Item/interface";
 import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 
 export const TopMusic = ({
   data,

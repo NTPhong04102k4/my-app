@@ -2,7 +2,7 @@ import { IconType } from "react-icons";
 import { FaPlus } from "react-icons/fa";
 import styled from "styled-components";
 import { AlbumsArtist } from "../data";
-import { IconComponent } from "../../../component/footer";
+import { IconComponent } from "src/component/IconComponent";
 
 export const TopAlbums = ({
   data,

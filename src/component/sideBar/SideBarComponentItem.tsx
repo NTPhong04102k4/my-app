@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { IconType } from "react-icons";
 import styled from "styled-components";
-import { IconComponent } from "../footer";
+import { IconComponent } from "../IconComponent";
 export interface selectPages {
   id: number;
   name: string;
@@ -84,7 +84,7 @@ const NavItemButton = styled.button<{ isActive: boolean }>`
   box-shadow: ${({ isActive }) => (isActive ? "0 0 4px #000000" : "none")};
   margin: 0.5rem 1rem;
   padding: 4px 6px;
-  border-radius: 4px;
+  border-radius: 10px;
   transition: all 0.2s ease;
   transform: ${({ isActive }) => (isActive ? "scale(1.05)" : "scale(1)")};
 `;
