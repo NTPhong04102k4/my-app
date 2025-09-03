@@ -21,14 +21,43 @@ export function BodyDiscovery() {
   return (
     <div className="h-auto flex-col flex items-center">
       <ImageSlide />
-      <TopMusic data={SONGS_WEEKLY} title="Weekly Top" type=" Songs" componentIcon={FaMusic} color="#EE10B0" />
-      <TopMusic data={RELEASE_SONGS} title="New Release " type="Songs"color="#EE10B0" componentIcon={FaMusic}/>
+      <TopMusic
+        data={SONGS_WEEKLY}
+        title="Weekly Top"
+        type=" Songs"
+        componentIcon={FaMusic}
+        color="#EE10B0"
+      />
+      <TopMusic
+        data={RELEASE_SONGS}
+        title="New Release "
+        type="Songs"
+        color="#EE10B0"
+        componentIcon={FaMusic}
+      />
       <TopTrending data={DATA_TRENDING} title="Trending Songs" />
       <TopSinger data={DATA_SINGERS} title="Popular Artist" color="#EE10B0" />
-     <TopVideo data={MUSIC_VIDEO} title="Music" type="Video" color={"#EE10B0"}/>
-     <TopMusic data={ALBUMS} title="Top" type="Albums"  color="#0E9EEF" componentIcon={RiRecordCircleLine}/> 
-      <TopPlaylist data={PLAYLIST} title="Mood " type="Playlists" color="#EE10B0" componentIcon={MdOutlineQueueMusic}/>
-      <LoginWeb/>
+      <TopVideo
+        data={MUSIC_VIDEO}
+        title="Music"
+        type="Video"
+        color={"#EE10B0"}
+      />
+      <TopMusic
+        data={ALBUMS}
+        title="Top"
+        type="Albums"
+        color="#0E9EEF"
+        componentIcon={RiRecordCircleLine}
+      />
+      <TopPlaylist
+        data={PLAYLIST}
+        title="Mood "
+        type="Playlists"
+        color="#EE10B0"
+        componentIcon={MdOutlineQueueMusic}
+      />
+      <LoginWeb />
     </div>
   );
 }
