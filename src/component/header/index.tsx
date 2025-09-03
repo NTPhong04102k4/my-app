@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { IconComponent } from "../IconComponent";
+import { checkPlatform } from "../common/const";
 
 export function HeaderComponent() {
   const navigate = useNavigate();
+  const platform = checkPlatform();
   return (
     <HeaderContainer>
       <SearchContainer>
@@ -15,14 +17,14 @@ export function HeaderComponent() {
         <SearchInput placeholder="Search For Musics, Artists, Albums ..." />
       </SearchContainer>
       <NavContainer>
-        <NavButton>
-          <Title>About</Title>
+        <NavButton onClick={() => navigate("about")}>
+          <span>About</span>
         </NavButton>
-        <NavButton>
-          <Title>Contact</Title>
+        <NavButton onClick={() => navigate("contact")}>
+          <span>Contact</span>
         </NavButton>
-        <NavButton>
-          <Title>Premium</Title>
+        <NavButton onClick={() => navigate("setting ")}>
+          <span>Premium</span>
         </NavButton>
       </NavContainer>
       <AuthContainer>
@@ -112,13 +114,28 @@ const NavContainer = styled.div`
 const NavButton = styled.button`
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 8px 12px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  position: relative;
+  color: #fff;
+  font-size: 1.25rem;
+  &:hover {
+    transform: translateY(-2px);
+    scale: 1.05;
+    span {
+      color: #ee10b0;
+    }
+  }
 
-  Title {
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
+  &:active {
+    transform: translateY(0);
+
+    span {
+      color: #d00a9a;
+    }
+    scale: 0.95;
   }
 `;
 
@@ -129,6 +146,15 @@ const AuthContainer = styled.div`
   flex: 0 1 auto;
   /* padding-right: 30px; */
 `;
+
+// const Title = styled.h2`
+//   font-family: sans-serif, serif;
+//   font-size: 26px;
+//   font-weight: 500;
+//   color: #fff;
+//   transition: all 0.3s ease;
+//   user-select: none;
+// `;
 
 const AuthButton = styled.button<{ isPrimary?: boolean }>`
   width: 100px;
@@ -146,9 +172,9 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
   overflow: hidden;
 
   background: ${({ isPrimary }) =>
-    isPrimary ? "linear-gradient(45deg, #EE10B0, #FF69B4)" : "#1E1E1E"};
+    isPrimary ? "linear-gradient(45deg, #e408a5, #edabcc)" : "#1E1E1E"};
   color: #fff;
-  border: ${({ isPrimary }) => (isPrimary ? "none" : "1px solid #EE10B0")};
+  border: ${({ isPrimary }) => (isPrimary ? "none" : "1px solid #430331")};
 
   &::before {
     content: "";
@@ -160,7 +186,7 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     background: ${({ isPrimary }) =>
       !isPrimary
         ? "linear-gradient(45deg, #545253, #1E1E1E)"
-        : "linear-gradient(45deg, #b16f9e, #FF69B4)"};
+        : "linear-gradient(45deg, #b16f9e, #e482b3)"};
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -185,10 +211,4 @@ const AuthButton = styled.button<{ isPrimary?: boolean }>`
     position: relative;
     z-index: 1;
   }
-`;
-const Title = styled.h2`
-  font-family: sans-serif, serif;
-  font-size: 26px;
-  font-weight: 500;
-  color: #fff;
 `;

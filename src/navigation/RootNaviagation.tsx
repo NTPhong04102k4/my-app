@@ -14,6 +14,8 @@ import styled from "styled-components";
 import Login from "src/pages/login";
 import SignUp from "src/pages/signUp";
 import MostPlayed from "src/pages/mostPLayed";
+import Profile from "src/pages/personalArtist";
+import About from "src/pages/aboutUs";
 
 interface MainContentProps {
   children: React.ReactNode;
@@ -60,6 +62,8 @@ export const RoutesHandler: React.FC = () => {
           <Route path="/yourPlaylist" element={<YourPlaylist />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/home/about" element={<About />} />
         </Routes>
       </MainContent>
     </Layout>
