@@ -1,0 +1,65 @@
+// firestore.rules  
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users collection - chỉ owner đọc/ghi được
+    match /users/{userId} {
+      allow read, write: if request.auth != null 
+        && request.auth.uid == userId;
+      allow read: if request.auth != null; // Cho public profile
+    }
+    
+    // Songs metadata - public read, admin write
+    match /songs/{songId} {
+      allow read: if true;
+      allow write: if request.auth != null 
+        && request.auth.token.admin == true;
+      
+      // Subcollection cho comments
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.auth != null 
+          && request.auth.uid == resource.data.userId;
+        allow update, delete: if request.auth != null 
+          && (request.auth.uid == resource.data.userId 
+              || request.auth.token.admin == true);
+      }
+    }
+    
+    // Artists - public read, admin write  
+    match /artists/{artistId} {
+      allow read: if true;
+      allow write: if request.auth != null 
+        && request.auth.token.admin == true;
+    }
+    
+    // Playlists - owner control, public read if public
+    match /playlists/{playlistId} {
+      allow read: if resource.data.isPublic == true 
+        || (request.auth != null && request.auth.uid == resource.data.userId);
+      allow create: if request.auth != null 
+        && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if request.auth != null 
+        && request.auth.uid == resource.data.userId;
+    }
+    
+    // User listening history - private
+    match /listening_history/{userId} {
+      allow read, write: if request.auth != null 
+        && request.auth.uid == userId;
+      
+      match /songs/{songId} {
+        allow read, write: if request.auth != null 
+          && request.auth.uid == userId;
+      }
+    }
+    
+    // Public analytics - admin only
+    match /analytics/{document=**} {
+      allow read: if request.auth != null 
+        && request.auth.token.admin == true;
+      allow write: if false; // Only server-side writes
+    }
+  }
+}

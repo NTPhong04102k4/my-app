@@ -1,8 +1,21 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
+import textGradientPlugin from "./src/styles/customLinearGardientText.ts";
+
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
-    theme: {
-      extend: {},
+  content: ["./src/**/*.{js,jsx,ts,tsx,html,css}"],
+  theme: {
+    extend: {
+      textGradients: {
+        "purple-to-blue": ["#EE10B0", "#0E9EEF"],
+      },
+      screens: {
+        "scrollbar-none": { raw: "(min-width: 0px)" },
+      },
     },
-    plugins: [],
-  }
+  },
+  plugins: [
+    require("@tailwindcss/forms"),
+    textGradientPlugin,
+  ],
+};

@@ -1,11 +1,8 @@
 {
+  "css.lint.unknownAtRule": "ignore",
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "ES5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +15,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "plugins": [{ "name": "typescript-styled-plugin" }],
+    "paths": {
+      "src/*": ["src/*"],
+      "@src/*": ["@src/*"]
+    },
+    "noUnusedLocals": false
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
