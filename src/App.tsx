@@ -1,18 +1,14 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 import { RoutesHandler } from "src/navigation/RootNaviagation";
-import { initializeApp } from "firebase/app";
+import { FirebaseApp, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-
+import { FirebaseOptions } from "firebase/app";
 // Kiểm tra biến môi trường trước khi khởi tạo
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseAnon = process.env.REACT_APP_SUPABASE_PUBLISHABLE_KEY;
 
-// Chỉ khởi tạo Supabase nếu có đủ thông tin
-const supabase =
-  supabaseUrl && supabaseAnon ? createClient(supabaseUrl, supabaseAnon) : null;
-
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -22,13 +18,13 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-// Chỉ khởi tạo Firebase nếu có đủ thông tin
-let app: any = null;
 let analytics: any = null;
 
 const App: React.FC = () => {
-  const [firebaseVal, useFirebaseVal] = useState(null);
-  const [supaBaseVal, useSupaBaseVal] = useState(null);
+  const [firebaseVal, useFirebaseVal] = useState<FirebaseApp>(
+    firebaseConfig as FirebaseApp
+  );
+  const [supaBaseVal, useSupaBaseVal] = useState<SupabaseClient>();
   useEffect(() => {
     getSupabase();
     getFirebase();
@@ -38,14 +34,16 @@ const App: React.FC = () => {
   }, []);
   const getSupabase = () => {
     if (supabaseUrl && supabaseAnon) {
-      useSupaBaseVal(createClient(supabaseUrl, supabaseAnon) as any);
+      const Supabase = createClient(supabaseUrl, supabaseAnon) as any;
+      useSupaBaseVal(Supabase);
       console.log("Supabase:", useSupaBaseVal);
     }
   };
   const getFirebase = () => {
     if (firebaseConfig.apiKey && firebaseConfig.projectId) {
       try {
-        useFirebaseVal(initializeApp(firebaseConfig) as any);
+        const app = initializeApp(firebaseConfig);
+        useFirebaseVal(app);
         if (typeof window !== "undefined" && firebaseConfig.measurementId) {
           analytics = getAnalytics(useFirebaseVal as any);
           console.log("Analytics:", analytics);
