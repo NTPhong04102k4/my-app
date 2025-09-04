@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const BREAKPOINTS = {
+export const BREAKPOINTS = {
   mobile: 768,
   tablet: 1024,
 } as const;
@@ -28,7 +28,6 @@ export interface DeviceInfo {
 }
 
 export interface ScreenInfo {
-  isExternalDisplay: boolean;
   screenCount: number;
   screenWidth: number;
   screenHeight: number;
@@ -70,7 +69,6 @@ const useViewport = (): ViewportSize => {
 
 const useScreen = (): ScreenInfo => {
   const [screenInfo, setScreenInfo] = useState<ScreenInfo>({
-    isExternalDisplay: false,
     screenCount: 1,
     screenWidth: 1920,
     screenHeight: 1080,
@@ -80,14 +78,8 @@ const useScreen = (): ScreenInfo => {
   useEffect(() => {
     const updateScreenInfo = () => {
       const screen = window.screen;
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-
-      const isExternalDisplay =
-        screen.width > windowWidth * 1.5 || screen.height > windowHeight * 1.5;
 
       setScreenInfo({
-        isExternalDisplay,
         screenCount: 1,
         screenWidth: screen.width,
         screenHeight: screen.height,
@@ -175,15 +167,12 @@ const useDisplayInfo = () => {
 
   const isVerticalDisplay =
     device.height > device.width && device.aspectRatio < 0.75;
-  const isLargeExternalDisplay =
-    screen.isExternalDisplay && device.width > 1920;
 
   return {
     ...device,
     ...screen,
     ...orientation,
     isVerticalDisplay,
-    isLargeExternalDisplay,
     adaptiveBreakpoints: {
       mobile: isVerticalDisplay ? BREAKPOINTS.mobile * 0.8 : BREAKPOINTS.mobile,
       tablet: isVerticalDisplay ? BREAKPOINTS.tablet * 0.8 : BREAKPOINTS.tablet,
@@ -202,16 +191,11 @@ const useResponsiveStyles = () => {
       portrait?: T;
       landscape?: T;
       verticalDisplay?: T;
-      externalDisplay?: T;
     },
     defaultValue: T
   ): T => {
     if (displayInfo.isVerticalDisplay && values.verticalDisplay !== undefined) {
       return values.verticalDisplay;
-    }
-
-    if (displayInfo.isExternalDisplay && values.externalDisplay !== undefined) {
-      return values.externalDisplay;
     }
 
     if (displayInfo.isPortrait && values.portrait !== undefined) {
@@ -236,3 +220,4 @@ const useResponsiveStyles = () => {
 
   return { getResponsiveValue };
 };
+export { useResponsiveStyles };

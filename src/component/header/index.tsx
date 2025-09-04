@@ -3,11 +3,21 @@ import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { IconComponent } from "../IconComponent";
-import { checkPlatform } from "../common/const";
+import { BREAKPOINTS, useResponsiveStyles } from "src/utils/getDevices";
 
 export function HeaderComponent() {
   const navigate = useNavigate();
-  const platform = checkPlatform();
+  const { getResponsiveValue } = useResponsiveStyles();
+  const isMobile = getResponsiveValue({ mobile: true }, false);
+  const isTablet = getResponsiveValue({ tablet: true }, false);
+  const isDesktop = getResponsiveValue({ desktop: true }, false);
+  const isPortrait = getResponsiveValue({ portrait: true }, false);
+  const isLandscape = getResponsiveValue({ landscape: true }, false);
+  const isVerticalDisplay = getResponsiveValue(
+    { verticalDisplay: true },
+    false
+  );
+
   return (
     <HeaderContainer>
       <SearchContainer>
@@ -31,7 +41,19 @@ export function HeaderComponent() {
         <AuthButton
           isPrimary={false}
           onClick={() => {
-            navigate("login");
+            console.log(
+              "isMobile",
+              isMobile,
+              isTablet,
+              "isDesktop",
+              isDesktop,
+              "isPortrait",
+              isPortrait,
+              "isLandscape",
+              isLandscape,
+              "isVerticalDisplay",
+              isVerticalDisplay
+            );
           }}
         >
           <span>Login</span>
