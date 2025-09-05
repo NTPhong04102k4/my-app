@@ -19,7 +19,7 @@ const firebaseConfig: FirebaseOptions = {
 };
 
 let analytics: any = null;
-
+console.log('hi')
 const App: React.FC = () => {
   const [firebaseVal, useFirebaseVal] = useState<FirebaseApp>(
     firebaseConfig as FirebaseApp
